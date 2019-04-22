@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Airport do
+RSpec.describe Airport, type: :model do
   it { should have_valid(:name).when("Logan") }
   it { should_not have_valid(:name).when(nil, "") }
 
