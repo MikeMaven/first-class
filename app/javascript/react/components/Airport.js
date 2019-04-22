@@ -1,7 +1,6 @@
 import React from 'react'
 
 const Airport = props => {
-  debugger
   return(
     <div>
       <p> {props.name} </p>
