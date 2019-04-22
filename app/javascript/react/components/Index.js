@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+import Airport from './Airport'
+
 class Index extends Component {
 
   constructor(props) {
@@ -23,8 +25,7 @@ class Index extends Component {
     .then(response => response.text())
     .then(body => {
       let bodyParsed = JSON.parse(body);
-      console.log(bodyParsed)
-      this.setState({ airports: bodyParsed })
+      this.setState({ airports: bodyParsed.airports })
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
@@ -32,8 +33,17 @@ class Index extends Component {
   render() {
     return(
       <div>
-        <p> Hello from Index! </p>
-        
+        {this.state.airports.map(airport => {
+          return(
+            <Airport
+              key={airport.id}
+              id={airport.id}
+              name={airport.name}
+              airport_code={airport.airport_code}
+              location={airport.location}
+            />
+          )
+        })}
       </div>
     )
   }
