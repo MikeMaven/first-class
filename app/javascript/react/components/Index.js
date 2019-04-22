@@ -5,7 +5,7 @@ class Index extends Component {
   constructor(props) {
     super(props)
     this.state = {
-
+      airports: []
     }
   }
 
@@ -22,19 +22,19 @@ class Index extends Component {
     })
     .then(response => response.text())
     .then(body => {
-      console.log("The body of the response from the fetch call:");
-      console.log(body);
       let bodyParsed = JSON.parse(body);
-      // this.setState({})
-      console.log("The same body in a much more readable format:");
-      console.log(bodyParsed);
+      console.log(bodyParsed)
+      this.setState({ airports: bodyParsed })
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
   render() {
     return(
-      <p> Hello from Index! </p>
+      <div>
+        <p> Hello from Index! </p>
+        
+      </div>
     )
   }
 }

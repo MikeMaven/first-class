@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resource :airports, only: [:show]
+      resources :airports, only: [:index]
     end
   end
 end
