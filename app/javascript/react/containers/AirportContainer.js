@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 
-import Airport from './Airport'
+import Airport from '../components/Airport'
 
-class Index extends Component {
-
+class AirportContainer extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -31,22 +30,26 @@ class Index extends Component {
   }
 
   render() {
-    return(
-      <div>
-        {this.state.airports.map(airport => {
-          return(
-            <Airport
-              key={airport.id}
-              id={airport.id}
-              name={airport.name}
-              airport_code={airport.airport_code}
-              location={airport.location}
-            />
-          )
-        })}
-      </div>
-    )
+      let airports = this.state.airports.map(airport => {
+        return(
+          <Airport
+            key={airport.id}
+            id={airport.id}
+            name={airport.name}
+            airport_code={airport.airport_code}
+            location={airport.location}
+          />
+        )
+      })
+
+      return(
+        <div className="airports">
+          <h1>Airports</h1>
+          {airports}
+          {this.props.children}
+        </div>
+      )
   }
 }
 
-export default Index
+export default AirportContainer

@@ -1,7 +1,12 @@
-import React from 'react'
+import React from 'react';
+import AirportContainer from '../containers/AirportContainer'
 
-export const App = (props) => {
-  return (<h1>Make It So React</h1>)
+export const App = props => {
+  return(
+    <div>
+      <AirportContainer />
+    </div>
+  )
 }
 
 export default App
