@@ -34,6 +34,7 @@ class AirportContainer extends Component {
         return(
           <Airport
             key={airport.id}
+            id={airport.id}
             name={airport.name}
             airport_code={airport.airport_code}
           />

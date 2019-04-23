@@ -1,4 +1,5 @@
 import '../../testHelper.js'
+import {Link} from 'react-router'
 
 import Airport from '../../../../app/javascript/react/components/Airport'
 
@@ -35,4 +36,10 @@ describe('Airport', () => {
     expect(wrapper.find('p')).toBePresent()
     expect(wrapper.find('p').text()).not.toContain("Boston")
   })
+
+  it('renders a react router link to a show page', () => {
+    expect(wrapper.find(Link)).toBePresent()
+    expect(wrapper.find(Link).text()).toContain("(BOS) Logan")
+  })
+
 });
