@@ -1,4 +1,4 @@
-class AirportsController < ActionController::Base
+class AirportsController < ApplicationController
   def index
     
   end
