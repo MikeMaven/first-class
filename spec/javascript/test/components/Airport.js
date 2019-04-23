@@ -1,6 +1,6 @@
 import '../../testHelper.js'
 
-import {Link} from 'react-router'
+import { Link } from 'react-router'
 import Airport from '../../../../app/javascript/react/components/Airport'
 
 describe('Airport', () => {
