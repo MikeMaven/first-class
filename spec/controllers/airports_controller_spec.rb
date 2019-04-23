@@ -7,7 +7,7 @@ RSpec.describe Api::V1::AirportsController, type: :controller do
 
       get :index
       returned_json = JSON.parse(response.body)
-      
+
       expect(response.status).to eq(200)
       expect(response.content_type).to eq('application/json')
       expect(returned_json.length).to eq(1)
@@ -18,5 +18,25 @@ RSpec.describe Api::V1::AirportsController, type: :controller do
     end
   end
 
+  describe 'POST#index' do
+    let!(:new_airport) { { airport: {airport_code: "BOS", name: "Logan Int", location: "Boston, MA", description: "Cool"} }}
 
+    it 'adds a new airport to the database' do
+      expect { post :create, params: new_airport }.to change { Airport.count }.by 1
+
+    end
+
+    it 'returns the new airport as json' do
+      post :create, params: new_airport
+
+      response_json = JSON.parse(response.body)
+      expect(response.status).to eq 200
+      expect(response.content_type).to eq 'application/json'
+
+      expect(response_json['name']).to eq new_airport[:name]
+      expect(response_json['airport_code']).to eq new_airport[:airport_code]
+      expect(response_json['location']).to eq new_airport[:location]
+      expect(response_json['description']).to eq new_airport[:description]
+    end
+  end
 end
