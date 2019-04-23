@@ -3,4 +3,6 @@ class AirportsController < ApplicationController
   end
   def show
   end
+  def new
+  end
 end
