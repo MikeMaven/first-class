@@ -1,9 +1,8 @@
 import React from 'react';
 import { Router, browserHistory, Route, IndexRoute } from 'react-router';
 
-import AirportShowContainer from '../containers/AirportShowContainer'
-
 import AirportContainer from '../containers/AirportContainer'
+import AirportShowContainer from '../containers/AirportShowContainer'
 
 export const App = props => {
   return(
