@@ -1,5 +1,4 @@
 import '../../testHelper.js'
-
 import AirportContainer from '../../../../app/javascript/react/containers/AirportContainer'
 import Airport from '../../../../app/javascript/react/components/Airport'
 
