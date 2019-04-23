@@ -8,7 +8,7 @@ describe('AirportShowContainer', () => {
 
   beforeEach(() => {
     jasmineEnzyme();
-    wrapper = mount(
+    wrapper = shallow(
       <AirportShowContainer />
     )
   })
@@ -23,13 +23,12 @@ describe('AirportShowContainer', () => {
   });
 
   it('should render Airport Tile Components with specific props', () => {
-    wrapper.setState({ airport: {id: 1, name: "Logan", location: "Boston", airport_code: "BOS", description: "anything"}});
+    wrapper.setState({ airport: {id: 1, name: "Logan", location: "Boston", airport_code: "BOS", description: "Anything"} });
     expect(wrapper.find(AirportShowTile).props()).toEqual({
-      id: 1,
       name: "Logan",
-      airport_code: "BOS",
       location: "Boston",
-      description: "anything"
+      airport_code: "BOS",
+      description: "Anything"
     });
   });
 });
