@@ -15,9 +15,7 @@ class NewAirportFormContainer extends React.Component {
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleClearForm = this.handleClearForm.bind(this)
-    this.validateNameInput = this.validateNameInput.bind(this)
-    this.validateLocationInput = this.validateLocationInput.bind(this)
-    this.validateAirportCodeInput = this.validateAirportCodeInput.bind(this)
+    this.validateInput = this.validateInput.bind(this)
     this.addNewAirport = this.addNewAirport.bind(this)
   }
 
@@ -47,16 +45,19 @@ class NewAirportFormContainer extends React.Component {
         .then(response => {
           browserHistory.push('/airports')
         })
-        .catch(error => console.error(`Error in fetch: ${error.message}`));
+        .catch(error => {
+          let formError = { formError: error.message }
+          this.setState({ errors: Object.assign({}, this.state.errors, formError) })
+          console.error(`Error in fetch: ${error.message}`)
+        });
   }
 
   handleSubmit(event) {
     event.preventDefault()
-
     if (
-      this.validateNameInput(this.state.airportName) &&
-      this.validateLocationInput(this.state.airportLocation) &&
-      this.validateAirportCodeInput(this.state.airportCode)
+      this.validateInput(this.state.airportName) &&
+      this.validateInput(this.state.airportLocation) &&
+      this.validateInput(this.state.airportCode)
     ) {
       let formPayload = {
         name: this.state.airportName,
@@ -80,41 +81,25 @@ class NewAirportFormContainer extends React.Component {
     })
   }
 
-  validateNameInput(selection) {
+  validateInput(selection){
     if (selection.trim() === '') {
-      let newError = { nameError: 'You must enter a name for the airport.' }
-      this.setState({ errors: Object.assign({}, this.state.errors, newError) })
+      if (selection === this.state.airportName) {
+        let newError = { nameError: 'You must enter a name for the airport.' }
+        this.setState({ errors: Object.assign({}, this.state.errors, newError) })
+      }
+      else if (selection === this.state.airportCode) {
+        let newError = { nameError: 'You must enter a 3 letter code for the airport.' }
+        this.setState({ errors: Object.assign({}, this.state.errors, newError) })
+      }
+      else {
+        let newError = { nameError: 'You must enter a location for the airport.' }
+        this.setState({ errors: Object.assign({}, this.state.errors, newError) })
+      }
       return false
     } else {
       let errorState = this.state.errors
-      delete errorState.nameError
-      this.setState({ errors: errorState })
-      return true
-    }
-  }
-
-  validateAirportCodeInput(selection) {
-    if (selection.trim() === '') {
-      let newError = { codeError: 'You must enter a 3 letter code for the airport.' }
-      this.setState({ errors: Object.assign({}, this.state.errors, newError) })
-      return false
-    } else {
-      let errorState = this.state.errors
-      delete errorState.codeError
-      this.setState({ errors: errorState })
-      return true
-    }
-  }
-
-  validateLocationInput(selection) {
-    if (selection.trim() === '') {
-      let newError = { locationError: 'You must enter a location for the airport.' }
-      this.setState({ errors: Object.assign({}, this.state.errors, newError) })
-      return false
-    } else {
-      let errorState = this.state.errors
-      delete errorState.locationError
-      this.setState({ errors: errorState })
+      delete errorState.values
+      this.setState({ errors: {} })
       return true
     }
   }

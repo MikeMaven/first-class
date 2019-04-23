@@ -7,6 +7,8 @@ class Api::V1::AirportsController < ApiController
 
     if airport.save
       render json: { airport: airport }
+    else
+      render json: { airport: airport }
     end
   end
 

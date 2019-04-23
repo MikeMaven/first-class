@@ -8,8 +8,7 @@ export const App = props => {
   return(
     <div>
       <Router history={browserHistory}>
-        <Route path='/airports' component={AirportContainer} >
-        </Route>
+        <Route path='/airports' component={AirportContainer}/>
         <Route path='/airports/new' component={NewAirportFormContainer}/>
       </Router>
     </div>
