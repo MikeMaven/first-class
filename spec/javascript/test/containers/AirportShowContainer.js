@@ -6,6 +6,7 @@ import AirportShowTile from '../../../../app/javascript/react/components/Airport
 
 describe('AirportShowContainer', () => {
   let airport,
+      reviews,
       wrapper;
 
   beforeEach(() => {
@@ -16,6 +17,16 @@ describe('AirportShowContainer', () => {
     fetchMock.get('/api/v1/airports/1.json', {
       status: 200,
       body: airport
+    });
+    reviews = {
+      reviews: [
+        {"id":1,"title":"This is a title","body":"This body has to be at least twenty chars","overall_rating":5,"queue_time":4,"cleanliness":3,"wifi":2,"staff":1,"lounge_space":3,"airport_id":1,"created_at":"2019-04-24T14:16:16.896Z","updated_at":"2019-04-24T14:16:16.896Z"},
+        {"id":2,"title":"This is a title","body":"This body has to be at least twenty chars","overall_rating":5,"queue_time":4,"cleanliness":3,"wifi":2,"staff":1,"lounge_space":4,"airport_id":1,"created_at":"2019-04-24T15:26:21.467Z","updated_at":"2019-04-24T15:26:21.467Z"}
+      ]
+    }
+    fetchMock.get('/api/v1/airports/1/reviews.json', {
+      status: 200,
+      body: reviews
     });
     wrapper = mount(
       <AirportShowContainer params={ { id: airport.airport.id } } />

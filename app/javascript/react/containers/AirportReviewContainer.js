@@ -47,7 +47,6 @@ class AirportReviewContainer extends Component{
 
     return(
       <div className="review-container">
-        <h1>Hello from airport review container</h1>
         {reviews}
       </div>
     )
