@@ -13,7 +13,13 @@ describe('AirportShowContainer', () => {
   beforeEach(() => {
     jasmineEnzyme();
     airport = {
-      airport: {id: 1, name: "Logan", location: "Boston", airport_code: "BOS", description: "Anything"}
+      airport: {
+        id: 1,
+        name: "Logan",
+        location: "Boston",
+        airport_code: "BOS",
+        description: "Anything"
+      }
     }
     fetchMock.get('/api/v1/airports/1.json', {
       status: 200,
@@ -37,7 +43,13 @@ describe('AirportShowContainer', () => {
   afterEach(fetchMock.restore)
 
   it('should should have the specified initial state', () => {
-    expect(wrapper.state()).toEqual({ airport: {id: '', name: '', airport_code: '', location: '', description: ''} });
+    expect(wrapper.state()).toEqual({ airport: {
+      id: '',
+      name: '',
+      airport_code: '',
+      location: '',
+      description: ''
+    }});
   });
 
   it('renders an h1 tag titled Airport', () => {
@@ -47,7 +59,12 @@ describe('AirportShowContainer', () => {
 
   it('should render Airport Tile Components with specific props', (done) => {
     setTimeout(() => {
-      expect(wrapper.find(AirportShowTile).props()).toEqual({name: "Logan", location: "Boston", airport_code: "BOS", description: "Anything"})
+      expect(wrapper.find(AirportShowTile).props()).toEqual({
+        name: "Logan",
+        location: "Boston",
+        airport_code: "BOS",
+        description: "Anything"
+      })
       done()
     }, 0)
   });

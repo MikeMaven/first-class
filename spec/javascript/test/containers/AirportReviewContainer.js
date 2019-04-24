@@ -12,7 +12,19 @@ describe('AirportReviewContainer', () => {
     jasmineEnzyme();
     reviews = {
       reviews: [
-        {"id":1,"title":"This is a title","body":"This body has to be at least twenty chars","overall_rating":5,"queue_time":4,"cleanliness":3,"wifi":2,"staff":1,"lounge_space":3,"airport_id":1,"created_at":"2019-04-24T14:16:16.896Z","updated_at":"2019-04-24T14:16:16.896Z"}
+        {
+          id: 1,
+          title: "This is a title",
+          body: "This body has to be at least twenty chars",
+          overall_rating: 5,
+          queue_time: 4,
+          cleanliness: 3,
+          wifi: 2,
+          staff: 1,
+          lounge_space: 3,
+          airport_id: 1,
+          created_at: "2019-04-24T14:16:16.896Z",
+          updated_at: "2019-04-24T14:16:16.896Z"}
       ]
     }
     fetchMock.get('/api/v1/airports/1/reviews.json', {
@@ -39,7 +51,16 @@ describe('AirportReviewContainer', () => {
 
   it('should render Review Tile Components with specific props', (done) => {
     setTimeout(() => {
-      expect(wrapper.find(AirportReviewTile).props()).toEqual({"title":"This is a title","body":"This body has to be at least twenty chars","overall_rating":5,"queue_time":4,"cleanliness":3,"wifi":2,"staff":1,"lounge_space":3 })
+      expect(wrapper.find(AirportReviewTile).props()).toEqual({
+        title: "This is a title",
+        body: "This body has to be at least twenty chars",
+        overall_rating: 5,
+        queue_time: 4,
+        cleanliness: 3,
+        wifi: 2,
+        staff: 1,
+        lounge_space: 3
+      })
       done()
     }, 0)
   });
