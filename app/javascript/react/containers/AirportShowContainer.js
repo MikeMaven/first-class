@@ -22,10 +22,9 @@ class AirportShowContainer extends Component {
         throw(error);
       }
     })
-    .then(response => response.text())
+    .then(response => response.json())
     .then(body => {
-      let bodyParsed = JSON.parse(body);
-      this.setState({ airport: bodyParsed.airport })
+      this.setState({ airport: body.airport })
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
