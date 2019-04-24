@@ -1,12 +1,10 @@
 class Api::V1::AirportsController < ApiController
   def index
-    render json: { airports: Airport.all }
+    render json: Airport.all
   end
-  
   def show
-    render json: { airport: Airport.find(params[:id]) }
+    render json: Airport.find(params[:id])
   end
-
   def create
     airport = Airport.new(airport_params)
 
