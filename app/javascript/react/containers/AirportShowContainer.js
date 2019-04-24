@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 
 import AirportShowTile from '../components/AirportShowTile'
+import AirportReviewContainer from "./AirportReviewContainer"
 
 class AirportShowContainer extends Component {
   constructor(props) {
@@ -42,6 +43,7 @@ class AirportShowContainer extends Component {
           description = {this.state.airport.description}
         />
         {this.props.children}
+        <AirportReviewContainer airport_id={this.props.params.id} />
       </div>
     )
   }
