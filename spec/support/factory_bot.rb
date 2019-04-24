@@ -15,4 +15,15 @@ FactoryBot.define do
     description { Faker::Quote.famous_last_words }
   end
 
+  factory :review do
+    title { Faker::Marketing.buzzwords }
+    body { Faker::Quote.famous_last_words }
+    overall_rating { Faker::Number.within(1..5) }
+    queue_time { Faker::Number.within(1..5) }
+    cleanliness { Faker::Number.within(1..5) }
+    wifi { Faker::Number.within(1..5) }
+    staff { Faker::Number.within(1..5) }
+    lounge_space { Faker::Number.within(1..5) }
+  end
+
 end
