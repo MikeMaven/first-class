@@ -10,6 +10,7 @@ RSpec.describe Api::V1::AirportsController, type: :controller do
 
       expect(response.status).to eq(200)
       expect(response.content_type).to eq('application/json')
+
       expect(returned_json.length).to eq(1)
       expect(returned_json['airports'][0]['id']).to eq(airport1.id)
       expect(returned_json['airports'][0]['name']).to eq(airport1.name)
@@ -18,12 +19,30 @@ RSpec.describe Api::V1::AirportsController, type: :controller do
     end
   end
 
+  describe 'GET#show' do
+    it 'returns successful response with json-formatted data for a specific airport' do
+      airport1 = Airport.create(name: "JFK International", location: "New York", airport_code: "JFK", description: 'Great Airport', )
+
+      get :show, params: {id: airport1.id}
+      returned_json = JSON.parse(response.body)
+
+      expect(response.status).to eq(200)
+      expect(response.content_type).to eq('application/json')
+
+      expect(returned_json.length).to eq(1)
+      expect(returned_json['airport']['id']).to eq(airport1.id)
+      expect(returned_json['airport']['name']).to eq(airport1.name)
+      expect(returned_json['airport']['location']).to eq(airport1.location)
+      expect(returned_json['airport']['airport_code']).to eq(airport1.airport_code)
+      expect(returned_json['airport']['description']).to eq(airport1.description)
+    end
+  end
+
   describe 'POST#index' do
     let!(:new_airport) { { airport: {airport_code: "BOS", name: "Logan Int", location: "Boston, MA", description: "Cool"} }}
 
     it 'adds a new airport to the database' do
       expect { post :create, params: new_airport }.to change { Airport.count }.by 1
-
     end
 
     it 'returns the new airport as json' do

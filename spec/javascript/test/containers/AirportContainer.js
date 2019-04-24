@@ -1,4 +1,5 @@
 import '../../testHelper.js'
+
 import AirportContainer from '../../../../app/javascript/react/containers/AirportContainer'
 import Airport from '../../../../app/javascript/react/components/Airport'
 
@@ -24,6 +25,7 @@ describe('AirportContainer', () => {
   it('should render Airport Components with specific props', () => {
     wrapper.setState({ airports: [{id: 1, name: "Logan", location: "Boston", airport_code: "BOS"}] });
     expect(wrapper.find(Airport).props()).toEqual({
+      id: 1,
       name: "Logan",
       airport_code: "BOS"
     });

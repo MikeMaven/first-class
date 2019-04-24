@@ -1,23 +1,24 @@
 import '../../testHelper.js'
 
-import { Link } from 'react-router'
-import Airport from '../../../../app/javascript/react/components/Airport'
+import AirportShowTile from '../../../../app/javascript/react/components/AirportShowTile'
 
-describe('Airport', () => {
+describe('AirportShowTile', () => {
   let key,
       name,
       airport_code,
       location,
+      description,
       wrapper;
 
   beforeEach(() => {
     jasmineEnzyme();
     wrapper = mount(
-      <Airport
+      <AirportShowTile
         key={"1"}
         name={"Logan"}
         airport_code={"BOS"}
         location={"Boston"}
+        description={"Anything"}
       />
     )
   })
@@ -32,14 +33,11 @@ describe('Airport', () => {
     expect(wrapper.find('p').text()).toContain("BOS")
   })
 
-  it('does not render a p tag with the airport location', () => {
-    expect(wrapper.find('p')).toBePresent()
-    expect(wrapper.find('p').text()).not.toContain("Boston")
+  it('renders a ul tag with the airport location', () => {
+    expect(wrapper.find('ul').text()).toContain("Boston")
   })
 
-  it('renders a react router link to a show page', () => {
-    expect(wrapper.find(Link)).toBePresent()
-    expect(wrapper.find(Link).text()).toContain("(BOS) Logan")
+  it('renders a ul tag with the airport description', () => {
+    expect(wrapper.find('ul').text()).toContain("Anything")
   })
-
 });
