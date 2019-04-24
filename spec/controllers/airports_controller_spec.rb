@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Api::V1::AirportsController, type: :controller do
   describe 'GET#index' do
     it 'returns successful response with json-formatted data' do
-      airport1 = Airport.create(name: "Logan", location: "Boston", airport_code: "BOS")
+      airport1 = FactoryBot.create(:airport)
 
       get :index
       returned_json = JSON.parse(response.body)
@@ -21,7 +21,7 @@ RSpec.describe Api::V1::AirportsController, type: :controller do
 
   describe 'GET#show' do
     it 'returns successful response with json-formatted data for a specific airport' do
-      airport1 = Airport.create(name: "JFK International", location: "New York", airport_code: "JFK", description: 'Great Airport', )
+      airport1 = FactoryBot.create(:airport)
 
       get :show, params: {id: airport1.id}
       returned_json = JSON.parse(response.body)
