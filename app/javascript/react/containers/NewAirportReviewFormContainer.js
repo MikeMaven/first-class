@@ -1,0 +1,214 @@
+import React, { Component } from 'react';
+import TextField from '../components/TextField';
+import NumberField from '../components/NumberField'
+import { Router, browserHistory, Route, IndexRoute } from 'react-router';
+
+class NewAirportReviewFormContainer extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      title: '',
+      body: '',
+      overall_rating: '',
+      queue_time: '',
+      cleanliness: '',
+      wifi: '',
+      staff: '',
+      lounge_space: '',
+      errors: {}
+    }
+    this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
+    this.handleClearForm = this.handleClearForm.bind(this)
+    this.validateTitle = this.validateTitle.bind(this)
+    this.validateBody = this.validateBody.bind(this)
+    this.validateRating = this.validateRating.bind(this)
+    this.addNewAirportReview = this.addNewAirportReview.bind(this)
+  }
+
+  handleChange(event) {
+    this.setState({ [event.target.name]: event.target.value })
+  }
+
+  addNewAirportReview(formPayload){
+    // fetch("/api/v1/airports",{
+    //   credentials: 'same-origin',
+    //   method: 'POST',
+    //   body: JSON.stringify(formPayload),
+    //   headers: {
+    //     'Accept': 'application/json',
+    //     'Content-Type': 'application/json'
+    //     }
+    //   })
+    //   .then(response => {
+    //     if (response.ok) {
+    //       return response;
+    //     } else {
+    //       let errorMessage = `${response.status}(${response.statusText})` ,
+    //       error = new Error(errorMessage);
+    //       throw(error);
+    //     }
+    //     })
+    //     .then(response => {
+    //       browserHistory.push('/airports')
+    //     })
+    //     .catch(error => {
+    //       let formError = { formError: error.message }
+    //       this.setState({ errors: Object.assign({}, this.state.errors, formError) })
+    //       console.error(`Error in fetch: ${error.message}`)
+    //     });
+  }
+
+  handleSubmit(event) {
+    event.preventDefault()
+    if (
+      this.validateTitle(this.state.title) &&
+      this.validateBody(this.state.body) &&
+      this.validateRating(this.state.overall_rating, "Overall Rating") &&
+      this.validateRating(this.state.queue_time, "Queue Time Rating") &&
+      this.validateRating(this.state.cleanliness, "Cleanliness Rating") &&
+      this.validateRating(this.state.wifi, "Wifi Rating") &&
+      this.validateRating(this.state.staff, "Staff Rating") &&
+      this.validateRating(this.state.lounge_space, "Lounge Space Rating")
+    ) {
+      let formPayload = {
+        title: this.state.title,
+        body: this.state.body,
+        overall_rating: this.state.overall_rating,
+        queue_time: this.state.queue_time,
+        cleanliness: this.state.cleanliness,
+        wifi: this.state.wifi,
+        staff: this.state.staff,
+        lounge_space: this.state.lounge_space,
+      }
+      this.addNewAirportReview(formPayload);
+      this.handleClearForm(event)
+    }
+  }
+
+  handleClearForm(event) {
+    event.preventDefault()
+    this.setState({
+      title: '',
+      body: '',
+      overall_rating: '',
+      queue_time: '',
+      cleanliness: '',
+      wifi: '',
+      staff: '',
+      lounge_space: '',
+      errors: {}
+    })
+  }
+
+  validateTitle(title) {
+    if (title.trim() === '') {
+      let newError = { nameError: 'You must enter a title for the review.' }
+      this.setState({ errors: Object.assign({}, this.state.errors, newError) })
+      return false
+    } else {
+      let errorState = this.state.errors
+      delete errorState.values
+      this.setState({ errors: {} })
+      return true
+    }
+  }
+
+  validateBody(body) {
+    if (body.trim().length < 20) {
+      let newError = { nameError: 'Body must be at least 20 characters.' }
+      this.setState({ errors: Object.assign({}, this.state.errors, newError) })
+      return false
+    } else {
+      let errorState = this.state.errors
+      delete errorState.values
+      this.setState({ errors: {} })
+      return true
+    }
+  }
+
+  validateRating(rating, ratingName) {
+    if (rating < 1 || rating > 5) {
+      let newError = { nameError: `${ratingName} must be between 1 and 5.` }
+      this.setState({ errors: Object.assign({}, this.state.errors, newError) })
+      return false
+    } else {
+      let errorState = this.state.errors
+      delete errorState.values
+      this.setState({ errors: {} })
+      return true
+    }
+  }
+
+  render(){
+    let errorDiv
+    let errorItems
+
+    if (Object.keys(this.state.errors).length > 0) {
+      errorItems = Object.values(this.state.errors).map(error => {
+        return(<li key={error}>{error}</li>)
+      })
+      errorDiv = <div className="callout alert">{errorItems}</div>
+    }
+
+    return(
+      <form className="new-airport-review-form callout" onSubmit={this.handleSubmit}>
+      {errorDiv}
+        <TextField
+          name="title"
+          content={this.state.title}
+          label="Title:"
+          handleChangeMethod={this.handleChange}
+        />
+        <TextField
+          name="body"
+          content={this.state.body}
+          label="Body:"
+          handleChangeMethod={this.handleChange}
+        />
+        <NumberField
+          name="overall_rating"
+          content={this.state.overall_rating}
+          label="Overall Rating:"
+          handleChangeMethod={this.handleChange}
+        />
+        <NumberField
+          name="queue_time"
+          content={this.state.queue_time}
+          label="Queue Time Rating:"
+          handleChangeMethod={this.handleChange}
+        />
+        <NumberField
+          name="cleanliness"
+          content={this.state.cleanliness}
+          label="Cleanliness Rating:"
+          handleChangeMethod={this.handleChange}
+        />
+        <NumberField
+          name="wifi"
+          content={this.state.wifi}
+          label="Wifi Rating:"
+          handleChangeMethod={this.handleChange}
+        />
+        <NumberField
+          name="staff"
+          content={this.state.staff}
+          label="Staff Rating:"
+          handleChangeMethod={this.handleChange}
+        />
+        <NumberField
+          name="lounge_space"
+          content={this.state.lounge_space}
+          label="Lounge Space Rating:"
+          handleChangeMethod={this.handleChange}
+        />
+        <div className="button-group">
+          <button className="button" onClick={this.handleClearForm}>Clear</button>
+          <input className="button" type="submit" value="Submit Form" />
+        </div>
+      </form>
+    )
+  }
+}
+
+export default NewAirportReviewFormContainer;
