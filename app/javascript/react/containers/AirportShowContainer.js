@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
-
 import AirportShowTile from '../components/AirportShowTile'
-import NewAirportReviewFormContainer from "./NewAirportReviewFormContainer"
 import AirportReviewContainer from "./AirportReviewContainer"
 
 class AirportShowContainer extends Component {
@@ -43,7 +41,6 @@ class AirportShowContainer extends Component {
           description = {this.state.airport.description}
         />
         {this.props.children}
-        <NewAirportReviewFormContainer />
         <AirportReviewContainer airport_id={this.props.params.id} />
       </div>
     )

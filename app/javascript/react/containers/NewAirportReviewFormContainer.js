@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
+import { Router, browserHistory, Route, IndexRoute } from 'react-router';
 import TextField from '../components/TextField';
 import NumberField from '../components/NumberField'
-import { Router, browserHistory, Route, IndexRoute } from 'react-router';
 
 class NewAirportReviewFormContainer extends Component {
   constructor(props) {
@@ -31,32 +31,36 @@ class NewAirportReviewFormContainer extends Component {
   }
 
   addNewAirportReview(formPayload){
-    // fetch("/api/v1/airports",{
-    //   credentials: 'same-origin',
-    //   method: 'POST',
-    //   body: JSON.stringify(formPayload),
-    //   headers: {
-    //     'Accept': 'application/json',
-    //     'Content-Type': 'application/json'
-    //     }
-    //   })
-    //   .then(response => {
-    //     if (response.ok) {
-    //       return response;
-    //     } else {
-    //       let errorMessage = `${response.status}(${response.statusText})` ,
-    //       error = new Error(errorMessage);
-    //       throw(error);
-    //     }
-    //     })
-    //     .then(response => {
-    //       browserHistory.push('/airports')
-    //     })
-    //     .catch(error => {
-    //       let formError = { formError: error.message }
-    //       this.setState({ errors: Object.assign({}, this.state.errors, formError) })
-    //       console.error(`Error in fetch: ${error.message}`)
-    //     });
+    fetch(`/api/v1/airports/${this.props.airport_id}/reviews`,{
+      credentials: 'same-origin',
+      method: 'POST',
+      body: JSON.stringify(formPayload),
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+        }
+      })
+      .then(response => {
+        if (response.ok) {
+          return response;
+        } else {
+          let errorMessage = `${response.status}(${response.statusText})` ,
+          error = new Error(errorMessage);
+          throw(error);
+        }
+        })
+        .then(response => {
+          browserHistory.push(`/airports/${this.props.airport_id}`)
+          return response.json()
+        })
+        .then(review => {
+          this.props.addReview(review)
+        })
+        .catch(error => {
+          let formError = { formError: error.message }
+          this.setState({ errors: Object.assign({}, this.state.errors, formError) })
+          console.error(`Error in fetch: ${error.message}`)
+        });
   }
 
   handleSubmit(event) {

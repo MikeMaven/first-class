@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-
 import Airport from '../components/Airport'
 
 class AirportContainer extends Component {
