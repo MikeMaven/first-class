@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import NewAirportReviewFormContainer from "./NewAirportReviewFormContainer"
 import AirportReviewTile from '../components/AirportReviewTile'
 
 class AirportReviewContainer extends Component{
@@ -7,6 +8,13 @@ class AirportReviewContainer extends Component{
     this.state = {
       reviews: []
     }
+    this.addReview = this.addReview.bind(this)
+  }
+
+  addReview(review) {
+    let newReviews = this.state.reviews
+    newReviews.push(review.review)
+    this.setState( { reviews: newReviews } )
   }
 
   componentDidMount() {
@@ -46,6 +54,7 @@ class AirportReviewContainer extends Component{
 
     return(
       <div className="review-container">
+        <NewAirportReviewFormContainer airport_id={this.props.airport_id} addReview={this.addReview} />
         <h3>Reviews</h3>
         {reviews}
       </div>

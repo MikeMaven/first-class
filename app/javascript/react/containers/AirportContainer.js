@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
+<<<<<<< HEAD
 import { Link } from 'react-router'
 
+=======
+>>>>>>> d3c274507a4101eb297259ede44e22ba657ea9cc
 import Airport from '../components/Airport'
 
 class AirportContainer extends Component {
