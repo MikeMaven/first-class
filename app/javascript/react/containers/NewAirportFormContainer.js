@@ -1,6 +1,6 @@
 import React from 'react';
-import TextField from '../components/TextField';
 import { Router, browserHistory, Route, IndexRoute } from 'react-router';
+import TextField from '../components/TextField';
 
 class NewAirportFormContainer extends React.Component {
   constructor(props) {
