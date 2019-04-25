@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router'
 
 import Airport from '../components/Airport'
 
@@ -48,7 +49,7 @@ class AirportContainer extends Component {
       let adminDiv
 
       if (this.state.current_user.role === 'admin') {
-        adminDiv = <div className='admin-div'><a href="/airports/new">Add a new airport!</a></div>
+        adminDiv = <h4><Link to={"/airports/new"}> Add a new airport! </Link></h4>
       }
 
       return(

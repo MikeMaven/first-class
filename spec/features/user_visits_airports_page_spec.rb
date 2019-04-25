@@ -9,5 +9,5 @@ feature "user visits airports index page" do
 
     expect(page).to have_current_path("/airports")
   end
-  
+
 end
