@@ -54,7 +54,6 @@ class AirportReviewContainer extends Component{
 
     return(
       <div className="review-container">
-        <h3>Add A Review</h3>
         <NewAirportReviewFormContainer airport_id={this.props.airport_id} addReview={this.addReview} />
         <h3>Reviews</h3>
         {reviews}
