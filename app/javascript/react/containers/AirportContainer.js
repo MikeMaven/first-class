@@ -6,7 +6,8 @@ class AirportContainer extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      airports: []
+      airports: [],
+      current_user: {}
     }
   }
 
@@ -24,7 +25,10 @@ class AirportContainer extends Component {
     .then(response => response.text())
     .then(body => {
       let bodyParsed = JSON.parse(body);
-      this.setState({ airports: bodyParsed.airports })
+      this.setState({
+        airports: bodyParsed.airports,
+        current_user: bodyParsed.current_user
+      })
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
@@ -41,9 +45,16 @@ class AirportContainer extends Component {
         )
       })
 
+      let adminDiv
+
+      if (this.state.current_user.role === 'admin') {
+        adminDiv = <div className='admin-div'><a href="/airports/new">Add a new airport!</a></div>
+      }
+
       return(
         <div className="airports">
           <h1>Airports</h1>
+          {adminDiv}
           {airports}
           {this.props.children}
         </div>
