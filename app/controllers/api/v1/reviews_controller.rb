@@ -9,7 +9,6 @@ class Api::V1::ReviewsController < ApiController
     review = Review.new(review_params)
     review.airport = airport
     review.save
-    
     render json: { review: review }
   end
 

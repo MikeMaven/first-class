@@ -2,10 +2,8 @@ require 'rails_helper'
 
 RSpec.describe Api::V1::AirportsController, type: :controller do
   describe 'GET#index' do
+    let!(:airport1) { FactoryBot.create(:airport) }
     it 'returns successful response with json-formatted data' do
-      Airport.delete_all
-      airport1 = FactoryBot.create(:airport)
-
       get :index
       returned_json = JSON.parse(response.body)
 
@@ -21,9 +19,8 @@ RSpec.describe Api::V1::AirportsController, type: :controller do
   end
 
   describe 'GET#show' do
+    let!(:airport1) { FactoryBot.create(:airport) }
     it 'returns successful response with json-formatted data for a specific airport' do
-      airport1 = FactoryBot.create(:airport)
-
       get :show, params: {id: airport1.id}
       returned_json = JSON.parse(response.body)
 
@@ -41,7 +38,6 @@ RSpec.describe Api::V1::AirportsController, type: :controller do
 
   describe 'POST#index' do
     let!(:new_airport) { { airport: {airport_code: "BOS", name: "Logan Int", location: "Boston, MA", description: "Cool"} }}
-
     it 'adds a new airport to the database' do
       expect { post :create, params: new_airport }.to change { Airport.count }.by 1
     end

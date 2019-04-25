@@ -2,11 +2,10 @@ require 'rails_helper'
 
 RSpec.describe Api::V1::ReviewsController, type: :controller do
   describe 'GET#index' do
+    let!(:airport1) { FactoryBot.create(:airport) }
+    let!(:review1) { FactoryBot.create(:review, airport: airport1) }
+    let!(:review2) { FactoryBot.create(:review, airport: airport1) }
     it 'returns successful response with json-formatted data' do
-      airport1 = FactoryBot.create(:airport)
-      review1 = FactoryBot.create(:review, airport: airport1)
-      review2 = FactoryBot.create(:review, airport: airport1)
-
       get :index, params: {:airport_id => airport1.id}
 
       returned_json = JSON.parse(response.body)
@@ -40,9 +39,8 @@ RSpec.describe Api::V1::ReviewsController, type: :controller do
   end
 
   describe 'POST#index' do
-    new_airport = FactoryBot.create(:airport)
-    new_review = FactoryBot.create(:review, airport: new_airport)
-
+    let!(:new_airport) { FactoryBot.create(:airport) }
+    let!(:new_review) { FactoryBot.create(:review, airport: new_airport) }
     it 'adds a new review to the database' do
       expect { post :create, params: {:airport_id => new_airport.id, :review => {
         :title => new_review['title'],
