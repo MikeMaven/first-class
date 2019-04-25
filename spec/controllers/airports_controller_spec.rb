@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe Api::V1::AirportsController, type: :controller do
   describe 'GET#index' do
     it 'returns successful response with json-formatted data' do
+      Airport.delete_all
       airport1 = FactoryBot.create(:airport)
 
       get :index
