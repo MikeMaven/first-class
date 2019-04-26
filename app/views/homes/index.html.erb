@@ -1,12 +1,12 @@
-<div class="grid-x">
-  <div class="cell centered">
-    <h1>firstClass</h1>
-    <h5>Airport reviews for the frequent flyer.</h5>
+<div id="landing-page">
+  <div class="">
+    <h1 class="logo">firstClass</h1>
+    <h5 class="sub-header">Airport reviews for the frequent flyer.</h5>
   </div>
 
   <div class="cell">
-    <%= link_to "Get Started", airports_path, class: "button small" %>
-    <%= link_to 'Member Login', new_user_session_path, class: "button small" %>
+    <%= link_to "Get Started", airports_path, class: "red-button button" %>
+    <%= link_to 'Member Login', new_user_session_path, class: "secondary button" %>
   </div>
   <div class="">
     <% if @user %>
