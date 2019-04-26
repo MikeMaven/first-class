@@ -1,5 +1,4 @@
 class Api::V1::AirportsController < ApiController
-
   def index
     if current_user
       render json: { airports: serialized_airports, current_user: current_user }
@@ -27,5 +26,4 @@ class Api::V1::AirportsController < ApiController
   def serialized_airports
     ActiveModel::Serializer::ArraySerializer.new(Airport.all, each_serializer: AirportSerializer)
   end
-
 end

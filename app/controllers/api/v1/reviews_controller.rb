@@ -1,7 +1,11 @@
 class Api::V1::ReviewsController < ApiController
   def index
     airport = Airport.find(params[:airport_id])
-    render json: { reviews: airport.reviews }
+    if current_user
+      render json: { reviews: airport.reviews, current_user: current_user }
+    else
+      render json: { reviews: airport.reviews, current_user: { role: "guest" } }
+    end
   end
 
   def create
