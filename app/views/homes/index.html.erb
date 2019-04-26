@@ -10,7 +10,10 @@
   </div>
   <div class="">
     <% if @user %>
-    <%= image_tag @user.profile_photo.url %>
+      <% if @user.profile_photo.url %>
+        <%= image_tag @user.profile_photo.url %>
+      <% end %>
     <% end %>
+
   </div>
 </div>
