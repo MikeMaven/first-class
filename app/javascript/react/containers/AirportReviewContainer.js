@@ -6,7 +6,8 @@ class AirportReviewContainer extends Component{
   constructor(props){
     super(props)
     this.state = {
-      reviews: []
+      reviews: [],
+      current_user: {role: "guest"}
     }
     this.addReview = this.addReview.bind(this)
   }
@@ -30,12 +31,21 @@ class AirportReviewContainer extends Component{
     })
     .then(response => response.json())
     .then(body => {
-      this.setState({ reviews: body.reviews })
+      this.setState({
+        reviews: body.reviews,
+        current_user: body.current_user
+      })
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
 
   render() {
+    let memberDiv
+
+    if (this.state.current_user.role === "member") {
+      memberDiv = <NewAirportReviewFormContainer airport_id={this.props.airport_id} addReview={this.addReview} />
+    }
+    
     const reviews = this.state.reviews.map(review => {
       return(
         <AirportReviewTile
@@ -54,7 +64,7 @@ class AirportReviewContainer extends Component{
 
     return(
       <div className="review-container">
-        <NewAirportReviewFormContainer airport_id={this.props.airport_id} addReview={this.addReview} />
+        {memberDiv}
         <h3>Reviews</h3>
         {reviews}
       </div>

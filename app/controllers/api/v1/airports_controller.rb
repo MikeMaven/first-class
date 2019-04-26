@@ -1,4 +1,5 @@
 class Api::V1::AirportsController < ApiController
+  serialization_scope :current_user
 
   def index
     if current_user
@@ -8,7 +9,7 @@ class Api::V1::AirportsController < ApiController
     end
   end
   def show
-    render json: Airport.find(params[:id])
+    render json: Airport.find(params[:id]), serializer: AirportShowSerializer
   end
   def create
     airport = Airport.new(airport_params)
@@ -27,5 +28,4 @@ class Api::V1::AirportsController < ApiController
   def serialized_airports
     ActiveModel::Serializer::ArraySerializer.new(Airport.all, each_serializer: AirportSerializer)
   end
-
 end

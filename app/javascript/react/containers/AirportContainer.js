@@ -8,7 +8,7 @@ class AirportContainer extends Component {
     super(props)
     this.state = {
       airports: [],
-      current_user: {}
+      current_user: {role: "guest"}
     }
   }
 
