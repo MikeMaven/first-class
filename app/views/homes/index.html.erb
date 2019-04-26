@@ -8,4 +8,12 @@
     <%= link_to "Get Started", airports_path, class: "button small" %>
     <%= link_to 'Member Login', new_user_session_path, class: "button small" %>
   </div>
+  <div class="">
+    <% if @user %>
+      <% if @user.profile_photo.url %>
+        <%= image_tag @user.profile_photo.url %>
+      <% end %>
+    <% end %>
+
+  </div>
 </div>
