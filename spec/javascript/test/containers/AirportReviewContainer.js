@@ -39,6 +39,7 @@ describe('AirportReviewContainer', () => {
       status: 200,
       body: reviews
     });
+
     wrapper = mount(
       <AirportReviewContainer
         airport_id = {1}
@@ -82,8 +83,18 @@ describe('AirportReviewContainer', () => {
 
   it('should not render the new review form when not logged in as a member', (done) => {
     reviews.current_user.role = "guest"
+    fetchMock.get('/api/v1/airports/1/reviews.json', {
+      status: 200,
+      body: reviews
+    });
+    wrapper = mount(
+      <AirportReviewContainer
+        airport_id = {1}
+      />
+    )
+
     setTimeout(() => {
-      expect(wrapper.find(NewAirportReviewFormContainer)).toBePresent()
+      expect(wrapper.find(NewAirportReviewFormContainer)).not.toBePresent()
       done()
     }, 0)
   });
