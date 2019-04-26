@@ -43,7 +43,7 @@ describe('AirportContainer', () => {
   afterEach(fetchMock.restore)
 
   it('should should have the specified initial state', () => {
-    expect(wrapper.state()).toEqual({ airports: [], current_user: {} });
+    expect(wrapper.state()).toEqual({ airports: [], current_user: { role: "guest" } });
   });
 
   it('renders an h1 tag titled Airports', () => {
