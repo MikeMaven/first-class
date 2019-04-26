@@ -1,11 +1,14 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router'
+
 import Airport from '../components/Airport'
 
 class AirportContainer extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      airports: []
+      airports: [],
+      current_user: {}
     }
   }
 
@@ -23,7 +26,10 @@ class AirportContainer extends Component {
     .then(response => response.text())
     .then(body => {
       let bodyParsed = JSON.parse(body);
-      this.setState({ airports: bodyParsed.airports })
+      this.setState({
+        airports: bodyParsed.airports,
+        current_user: bodyParsed.current_user
+      })
     })
     .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
@@ -40,9 +46,16 @@ class AirportContainer extends Component {
         )
       })
 
+      let adminDiv
+
+      if (this.state.current_user.role === 'admin') {
+        adminDiv = <h4><Link to={"/airports/new"}> Add a new airport! </Link></h4>
+      }
+
       return(
         <div className="airports">
           <h1>Airports</h1>
+          {adminDiv}
           {airports}
           {this.props.children}
         </div>
