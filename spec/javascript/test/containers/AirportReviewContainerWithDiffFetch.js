@@ -32,7 +32,7 @@ describe('AirportReviewContainer', () => {
         email: "joshuathomaspereira@gmail.com",
         created_at: "2019-04-26 14:15:27",
         updated_at: "2019-04-26 14:15:27",
-        role: "member"
+        role: "guest"
       }
     }
     fetchMock.get('/api/v1/airports/1/reviews.json', {
@@ -48,42 +48,10 @@ describe('AirportReviewContainer', () => {
 
   afterEach(fetchMock.restore)
 
-  it('should should have the specified initial state', () => {
-    expect(wrapper.state()).toEqual({ reviews: [], current_user: { role: "guest" } });
-  });
-
-  it('renders an h3 tag titled Reviews', () => {
-    expect(wrapper.find('h3')).toBePresent()
-    expect(wrapper.find('h3').text()).toContain("Reviews")
-  });
-
-  it('should render Review Tile Components with specific props', (done) => {
-    setTimeout(() => {
-      expect(wrapper.find(AirportReviewTile).props()).toEqual({
-        title: "This is a title",
-        body: "This body has to be at least twenty chars",
-        overall_rating: 5,
-        queue_time: 4,
-        cleanliness: 3,
-        wifi: 2,
-        staff: 1,
-        lounge_space: 3
-      })
-      done()
-    }, 0)
-  });
-
-  it('should render the new review form when logged in as a member', (done) => {
-    setTimeout(() => {
-      expect(wrapper.find(NewAirportReviewFormContainer)).toBePresent()
-      done()
-    }, 0)
-  });
-
-  it('should not render the new review form when not logged in as a member', (done) => {
+  it('should not render the new review form when not logged in as a guest', (done) => {
     reviews.current_user.role = "guest"
     setTimeout(() => {
-      expect(wrapper.find(NewAirportReviewFormContainer)).toBePresent()
+      expect(wrapper.find(NewAirportReviewFormContainer)).not.toBePresent()
       done()
     }, 0)
   });
