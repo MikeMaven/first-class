@@ -1,6 +1,4 @@
 class Api::V1::AirportsController < ApiController
-  serialization_scope :current_user
-
   def index
     if current_user
       render json: { airports: serialized_airports, current_user: current_user }
