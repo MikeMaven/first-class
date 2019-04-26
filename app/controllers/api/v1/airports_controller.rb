@@ -9,7 +9,7 @@ class Api::V1::AirportsController < ApiController
     end
   end
   def show
-    render json: Airport.find(params[:id]), serializer: AirportShowSerializer
+    render json: Airport.find(params[:id])
   end
   def create
     airport = Airport.new(airport_params)

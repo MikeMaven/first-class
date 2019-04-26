@@ -1,5 +1,5 @@
 class AirportShowSerializer < ActiveModel::Serializer
-  attributes :id, :name, :airport_code, :description, :location, :current_user
+  attributes :id, :name, :airport_code, :description, :location
 
   def current_user
     if scope

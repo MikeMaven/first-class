@@ -13,7 +13,7 @@ RSpec.describe Api::V1::ReviewsController, type: :controller do
       expect(response.status).to eq(200)
       expect(response.content_type).to eq('application/json')
 
-      expect(returned_json.length).to eq(1)
+      expect(returned_json.length).to eq(2)
       expect(returned_json['reviews'][0]['id']).to eq(review1.id)
       expect(returned_json['reviews'][0]['title']).to eq(review1.title)
       expect(returned_json['reviews'][0]['body']).to eq(review1.body)

@@ -25,7 +25,8 @@ describe('AirportReviewContainer', () => {
           airport_id: 1,
           created_at: "2019-04-24T14:16:16.896Z",
           updated_at: "2019-04-24T14:16:16.896Z"}
-      ]
+      ],
+      current_user: { role: "guest" }
     }
     fetchMock.get('/api/v1/airports/1/reviews.json', {
       status: 200,
@@ -41,7 +42,7 @@ describe('AirportReviewContainer', () => {
   afterEach(fetchMock.restore)
 
   it('should should have the specified initial state', () => {
-    expect(wrapper.state()).toEqual({ reviews: [] });
+    expect(wrapper.state()).toEqual({ reviews: [], current_user: { role: "guest" } });
   });
 
   it('renders an h3 tag titled Reviews', () => {
