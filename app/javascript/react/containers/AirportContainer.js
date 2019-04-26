@@ -54,7 +54,7 @@ class AirportContainer extends Component {
 
       return(
         <div className="airports">
-          <h1>Airports</h1>
+          <h1 className="airports-container-header">Airports</h1>
           {adminDiv}
           {airports}
           {this.props.children}

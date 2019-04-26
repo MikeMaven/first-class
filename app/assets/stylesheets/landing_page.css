@@ -23,3 +23,11 @@ body {
   font-size: 2em;
   color: #162633;
 }
+
+.red-button {
+  background-color: #963742;
+}
+
+.red-button:hover {
+  background-color: #B26D75;
+}

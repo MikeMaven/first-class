@@ -1,3 +1,4 @@
-#top-bar-logo {
+.name h1 a {
   font-family: 'Arizonia', cursive;
+  font-size: 40px;
 }
