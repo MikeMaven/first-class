@@ -1,0 +1,25 @@
+body {
+  background-color: #EDF7FF;
+}
+
+#landing-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 75vh;
+  text-align: center;
+}
+
+.logo {
+  font-family: 'Arizonia', cursive;
+  font-size: 10em;
+  color: #162633;
+}
+.sub-header {
+  margin-top: -50px;
+  margin-bottom: 7px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 2em;
+  color: #162633;
+}
