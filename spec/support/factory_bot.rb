@@ -25,6 +25,7 @@ FactoryBot.define do
     staff { Faker::Number.within(1..5) }
     lounge_space { Faker::Number.within(1..5) }
     airport { FactoryBot.create(:airport) }
+    user { FactoryBot.create(:user) }
   end
 
 end
