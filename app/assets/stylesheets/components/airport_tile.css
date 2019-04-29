@@ -1,3 +1,20 @@
 .airport-tile {
+  margin: 20px;
   font-family: 'Roboto', sans-serif;
+  background-color: #963742;
+  border-radius: 20px;
+  text-align: center;
+  max-width: 400px;
+}
+
+.airport-tile p {
+  font-size: 1.3em;
+}
+
+.airport-tile a {
+  color: white;
+}
+
+.airport-tile a:hover {
+  color: #8596AD;
 }

@@ -49,7 +49,7 @@ class AirportContainer extends Component {
       let adminDiv
 
       if (this.state.current_user.role === 'admin') {
-        adminDiv = <h4><Link to={"/airports/new"}> Add a new airport! </Link></h4>
+        adminDiv = <h4 className="secondary button"><Link to={"/airports/new"}> Add a new airport! </Link></h4>
       }
 
       return(

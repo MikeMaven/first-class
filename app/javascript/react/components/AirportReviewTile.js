@@ -2,9 +2,9 @@ import React from "react"
 
 const AirportReviewTile = props => {
   return (
-    <div>
-      <h3>{props.title}</h3>
-      <p>{props.body}</p>
+    <div className="review-tile">
+      <h4 className="review-title">{props.title}</h4>
+      <p className="review-body">{props.body}</p>
       <ul>
         <li>Overall Rating: {props.overall_rating}</li>
         <li>Queue Time Rating: {props.queue_time}</li>

@@ -207,8 +207,8 @@ class NewAirportReviewFormContainer extends Component {
           handleChangeMethod={this.handleChange}
         />
         <div className="button-group">
-          <button className="button" onClick={this.handleClearForm}>Clear</button>
-          <input className="button" type="submit" value="Submit Form" />
+          <button className="secondary button" onClick={this.handleClearForm}>Clear</button>
+          <input className="success button" type="submit" value="Submit Form" />
         </div>
       </form>
     )

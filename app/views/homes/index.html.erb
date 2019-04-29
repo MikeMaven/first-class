@@ -8,7 +8,7 @@
     <%= link_to "Get Started", airports_path, class: "red-button button" %>
     <%= link_to 'Member Login', new_user_session_path, class: "secondary button" %>
   </div>
-  <div class="">
+  <div class="profile-photo">
     <% if @user %>
       <% if @user.profile_photo.url %>
         <%= image_tag @user.profile_photo.url %>
