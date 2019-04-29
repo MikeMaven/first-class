@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_26_144001) do
+ActiveRecord::Schema.define(version: 2019_04_29_151507) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,13 +20,6 @@ ActiveRecord::Schema.define(version: 2019_04_26_144001) do
     t.string "location", null: false
     t.string "airport_code", null: false
     t.string "description"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "all_airports", force: :cascade do |t|
-    t.string "code"
-    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -43,6 +36,7 @@ ActiveRecord::Schema.define(version: 2019_04_26_144001) do
     t.bigint "airport_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
     t.index ["airport_id"], name: "index_reviews_on_airport_id"
   end
 

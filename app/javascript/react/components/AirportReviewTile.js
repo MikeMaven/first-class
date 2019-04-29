@@ -1,6 +1,12 @@
 import React from "react"
 
 const AirportReviewTile = props => {
+  let editButton
+
+  if (props.editable) {
+    editButton = <div> <a href={`/reviews/${props.id}/edit`}>Edit</a> </div>
+  }
+
   return (
     <div className="review-tile">
       <h4 className="review-title">{props.title}</h4>
@@ -13,6 +19,7 @@ const AirportReviewTile = props => {
         <li>Staff Rating: {props.staff}</li>
         <li>Lounge Space Rating: {props.lounge_space}</li>
       </ul>
+      { editButton }
       <hr />
     </div>
   )

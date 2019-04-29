@@ -1,0 +1,48 @@
+<h1>Edit Review</h1>
+<div>
+  <%= form_for @review do |f| %>
+    <div class="row">
+      <%= f.label :title, "Title:" %><br />
+      <%= f.text_field :title %>
+    </div>
+
+    <div class="row">
+      <%= f.label :body, "Body:" %><br />
+      <%= f.text_field :body %>
+    </div>
+
+    <div class="row">
+      <%= f.label :overall_rating, "Overall Rating:" %><br />
+      <%= f.number_field :overall_rating %>
+    </div>
+
+    <div class="row">
+      <%= f.label :queue_time, "Queue Time Rating:" %><br />
+      <%= f.number_field :queue_time %>
+    </div>
+
+    <div class="row">
+      <%= f.label :cleanliness, "Cleanliness Rating:" %><br />
+      <%= f.number_field :cleanliness %>
+    </div>
+
+    <div class="row">
+      <%= f.label :wifi, "Wifi Rating:" %><br />
+      <%= f.number_field :wifi %>
+    </div>
+
+    <div class="row">
+      <%= f.label :staff, "Staff Rating:" %><br />
+      <%= f.number_field :staff %>
+    </div>
+
+    <div class="row">
+      <%= f.label :lounge_space, "Lounge Space Rating:" %><br />
+      <%= f.number_field :lounge_space %>
+    </div>
+
+    <div class="row">
+      <%= f.submit "Edit Review" %>
+    </div>
+  <% end %>
+</div>

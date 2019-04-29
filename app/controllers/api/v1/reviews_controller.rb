@@ -12,6 +12,7 @@ class Api::V1::ReviewsController < ApiController
     airport = Airport.find(params[:airport_id])
     review = Review.new(review_params)
     review.airport = airport
+    review.user = current_user
     review.save
     render json: { review: review }
   end

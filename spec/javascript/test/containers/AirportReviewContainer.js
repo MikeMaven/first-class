@@ -61,6 +61,7 @@ describe('AirportReviewContainer', () => {
   it('should render Review Tile Components with specific props', (done) => {
     setTimeout(() => {
       expect(wrapper.find(AirportReviewTile).props()).toEqual({
+        id: 1,
         title: "This is a title",
         body: "This body has to be at least twenty chars",
         overall_rating: 5,
@@ -68,7 +69,8 @@ describe('AirportReviewContainer', () => {
         cleanliness: 3,
         wifi: 2,
         staff: 1,
-        lounge_space: 3
+        lounge_space: 3,
+        editable: false
       })
       done()
     }, 0)
