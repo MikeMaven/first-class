@@ -16,8 +16,9 @@ const AirportReviewTile = props => {
       </ul>
       <hr />
       <VoteTile
-        review_id={props.review_id}
-        user_id={props.user_id}
+        score = {props.score}
+        review_id = {props.review_id}
+        user_id = {props.user_id}
       />
     </div>
   )

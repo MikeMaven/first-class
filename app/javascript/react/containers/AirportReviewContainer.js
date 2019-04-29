@@ -49,6 +49,7 @@ class AirportReviewContainer extends Component{
     const reviews = this.state.reviews.map(review => {
       return(
         <AirportReviewTile
+          score = {review.score}
           review_id = {review.id}
           user_id = {this.state.current_user.id}
           key = {review.id}
