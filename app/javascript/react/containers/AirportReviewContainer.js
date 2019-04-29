@@ -45,10 +45,12 @@ class AirportReviewContainer extends Component{
     if (this.state.current_user.role === "member") {
       memberDiv = <NewAirportReviewFormContainer airport_id={this.props.airport_id} addReview={this.addReview} />
     }
-    
+
     const reviews = this.state.reviews.map(review => {
       return(
         <AirportReviewTile
+          review_id = {review.id}
+          user_id = {this.state.current_user.id}
           key = {review.id}
           title = {review.title}
           body = {review.body}

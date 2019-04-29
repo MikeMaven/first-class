@@ -1,4 +1,5 @@
 import React from "react"
+import VoteTile from './VoteTile'
 
 const AirportReviewTile = props => {
   return (
@@ -14,6 +15,10 @@ const AirportReviewTile = props => {
         <li>Lounge Space Rating: {props.lounge_space}</li>
       </ul>
       <hr />
+      <VoteTile
+        review_id={props.review_id}
+        user_id={props.user_id}
+      />
     </div>
   )
 }
