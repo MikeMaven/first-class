@@ -1,10 +1,6 @@
 require 'rails_helper'
 
 feature "user visits edit page for review" do
-  # let!(:new_user) { FactoryBot.create(:user) }
-  # let!(:new_airport) { FactoryBot.create(:airport) }
-  # let!(:new_review) { FactoryBot.create(:review, airport: new_airport, user: new_user) }
-
   scenario 'sees edit page for review they own' do
     user = FactoryBot.create(:user)
     airport = FactoryBot.create(:airport)
