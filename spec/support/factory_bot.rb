@@ -11,7 +11,7 @@ FactoryBot.define do
   factory :airport do
     name { Faker::Company.name }
     location { Faker::Address.city }
-    airport_code { Faker::String.random(3) }
+    airport_code { (0...3).map { ('a'..'z').to_a[rand(26)] }.join }
     description { Faker::Quote.famous_last_words }
   end
 
