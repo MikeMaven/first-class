@@ -18,6 +18,7 @@ describe('AirportReviewTile', () => {
     jasmineEnzyme();
     wrapper = mount(
       <AirportReviewTile
+        id = {1}
         key = {1}
         title = {"My First Review"}
         body = {"This is a review. Boy, do I love flying from here."}
@@ -27,6 +28,7 @@ describe('AirportReviewTile', () => {
         wifi = {4}
         staff = {1}
         lounge_space = {5}
+        editable = {true}
       />
     )
   })
@@ -48,6 +50,29 @@ describe('AirportReviewTile', () => {
     expect(wrapper.find('ul').text()).toContain("Wifi Rating: 4")
     expect(wrapper.find('ul').text()).toContain("Staff Rating: 1")
     expect(wrapper.find('ul').text()).toContain("Lounge Space Rating: 5")
+  })
+
+  it('renders a link when editable', () => {
+    expect(wrapper.find('a')).toBePresent()
+  })
+
+  it('does not render a link when editable is false', () => {
+    wrapper = mount(
+      <AirportReviewTile
+        id = {1}
+        key = {1}
+        title = {"My First Review"}
+        body = {"This is a review. Boy, do I love flying from here."}
+        overall_rating = {5}
+        queue_time = {4}
+        cleanliness = {4}
+        wifi = {4}
+        staff = {1}
+        lounge_space = {5}
+        editable = {false}
+      />
+    )
+    expect(wrapper.find('a')).not.toBePresent()
   })
 
 });
