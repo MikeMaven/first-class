@@ -31,3 +31,9 @@ body {
 .red-button:hover {
   background-color: #B26D75;
 }
+
+.profile-photo img {
+  max-width: 200px;
+  height: auto;
+  border-radius: 25%;
+}

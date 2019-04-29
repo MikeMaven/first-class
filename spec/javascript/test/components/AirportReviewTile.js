@@ -31,9 +31,9 @@ describe('AirportReviewTile', () => {
     )
   })
 
-  it('renders an H3 tag with the review title', () => {
-    expect(wrapper.find('h3')).toBePresent()
-    expect(wrapper.find('h3').text()).toContain("My First Review")
+  it('renders an H4 tag with the review title', () => {
+    expect(wrapper.find('h4')).toBePresent()
+    expect(wrapper.find('h4').text()).toContain("My First Review")
   })
 
   it('renders a p tag with the review body', () => {

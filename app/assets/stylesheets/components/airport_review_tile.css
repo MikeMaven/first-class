@@ -1,0 +1,24 @@
+.review-tile {
+  padding: 20px;
+  margin: 10px;
+  border: 4px groove;
+  max-width: 400px;
+  background-color: #D8E1E8;
+  font-family: 'Roboto', sans-serif;
+}
+
+.review-tile ul {
+  list-style-type: circle;
+}
+
+.review-title {
+  padding: 4px;
+  color: white;
+  background-color: #963742;
+  width: 100%;
+}
+
+.review-body {
+  padding: 4px;
+  background-color: white;
+}
