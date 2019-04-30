@@ -10,6 +10,7 @@ Rails.application.routes.draw do
       resources :airports, only: [:index, :show, :create] do
         resources :reviews, only: [:index, :create]
       end
+      resources :votes, only: [:create, :update]
     end
   end
 end

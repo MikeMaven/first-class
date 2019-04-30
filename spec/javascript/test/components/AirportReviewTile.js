@@ -4,6 +4,9 @@ import AirportReviewTile from '../../../../app/javascript/react/components/Airpo
 
 describe('AirportReviewTile', () => {
   let key,
+      score,
+      review_id,
+      user_id,
       title,
       body,
       overall_rating,
@@ -18,6 +21,9 @@ describe('AirportReviewTile', () => {
     jasmineEnzyme();
     wrapper = mount(
       <AirportReviewTile
+        score = {9001}
+        review_id = {1}
+        user_id = {1}
         id = {1}
         key = {1}
         title = {"My First Review"}
@@ -40,7 +46,7 @@ describe('AirportReviewTile', () => {
 
   it('renders a p tag with the review body', () => {
     expect(wrapper.find('p')).toBePresent()
-    expect(wrapper.find('p').text()).toContain("This is a review. Boy, do I love flying from here.")
+    expect(wrapper.find('p.review-body').text()).toContain("This is a review. Boy, do I love flying from here.")
   })
 
   it('renders all li tags with all the ratings', () => {

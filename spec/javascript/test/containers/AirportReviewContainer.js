@@ -9,11 +9,15 @@ describe('AirportReviewContainer', () => {
   let reviews,
       wrapper;
 
+
   beforeEach(() => {
     jasmineEnzyme();
     reviews = {
       reviews: [
         {
+          score: 9001,
+          review_id: 1,
+          user_id: 1,
           id: 1,
           title: "This is a title",
           body: "This body has to be at least twenty chars",
@@ -62,6 +66,9 @@ describe('AirportReviewContainer', () => {
   it('should render Review Tile Components with specific props', (done) => {
     setTimeout(() => {
       expect(wrapper.find(AirportReviewTile).props()).toEqual({
+        score: 9001,
+        review_id: 1,
+        user_id: 1,
         id: 1,
         title: "This is a title",
         body: "This body has to be at least twenty chars",
@@ -71,7 +78,7 @@ describe('AirportReviewContainer', () => {
         wifi: 2,
         staff: 1,
         lounge_space: 3,
-        editable: true 
+        editable: true
       })
       done()
     }, 0)
@@ -116,6 +123,9 @@ describe('AirportReviewContainer', () => {
 
     setTimeout(() => {
       expect(wrapper.find(AirportReviewTile).props()).toEqual({
+        score: 9001,
+        review_id: 1,
+        user_id: 1,
         id: 1,
         title: "This is a title",
         body: "This body has to be at least twenty chars",
@@ -144,6 +154,9 @@ describe('AirportReviewContainer', () => {
 
     setTimeout(() => {
       expect(wrapper.find(AirportReviewTile).props()).toEqual({
+        score: 9001,
+        review_id: 1,
+        user_id: 1,
         id: 1,
         title: "This is a title",
         body: "This body has to be at least twenty chars",
@@ -174,6 +187,9 @@ describe('AirportReviewContainer', () => {
 
     setTimeout(() => {
       expect(wrapper.find(AirportReviewTile).props()).toEqual({
+        score: 9001,
+        review_id: 1,
+        user_id: 1,
         id: 1,
         title: "This is a title",
         body: "This body has to be at least twenty chars",
