@@ -47,7 +47,7 @@ class AirportReviewContainer extends Component{
     }
 
     const reviews = this.state.reviews.map(review => {
-      let editable = review.user_id === this.state.current_user.id
+      let editable = review.user_id === this.state.current_user.id || this.state.current_user.role === "admin"
       return(
         <AirportReviewTile
           key = {review.id}
