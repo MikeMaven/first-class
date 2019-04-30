@@ -71,7 +71,7 @@ describe('AirportReviewContainer', () => {
         wifi: 2,
         staff: 1,
         lounge_space: 3,
-        editable: false
+        editable: true 
       })
       done()
     }, 0)
@@ -171,7 +171,6 @@ describe('AirportReviewContainer', () => {
       />
     )
 
-    wrapper.forceUpdate(); 
 
     setTimeout(() => {
       expect(wrapper.find(AirportReviewTile).props()).toEqual({
