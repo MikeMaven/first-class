@@ -1,0 +1,6 @@
+<% if @user %>
+  <% if @user.profile_photo.url %>
+    <%= image_tag @user.profile_photo.url %>
+  <% end %>
+<% end %>
+<div id="app"></div>
