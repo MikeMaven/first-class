@@ -36,7 +36,7 @@ describe('VoteTile', () => {
     expect(wrapper.find('i.fa-rotate-90')).toBePresent()
   })
 
-  it('successfully adds to the list when a valid task is supplied', (done) => {
+  it('successfully updates the score when the upvote icon is clicked', (done) => {
     vote_body = {
       vote: {
         vote: 1,
