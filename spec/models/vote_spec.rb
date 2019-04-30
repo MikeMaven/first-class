@@ -18,12 +18,12 @@ RSpec.describe Vote, type: :model do
   end
   describe "#vote" do
     it "should not create a new vote when the user id and review id are the same" do
-      user = FactoryBot.create(:user)
-      review = FactoryBot.create(:review)
-      review_2 = FactoryBot.create(:review)
-      vote = Vote.create(vote: 1, user: user, review: review)
-      vote_2 = Vote.new(vote: 1, user: user, review: review)
-      vote_3 = Vote.create(vote: 1, user: user, review: review_2)
+      let!(:user) {FactoryBot.create(:user)}
+      let!(:review) {FactoryBot.create(:review)}
+      let!(:review_2) {FactoryBot.create(:review)}
+      let!(:vote) {Vote.create(vote: 1, user: user, review: review)}
+      let!(:vote_2) {Vote.new(vote: 1, user: user, review: review)}
+      let!(:vote_3) {Vote.create(vote: 1, user: user, review: review_2)}
 
       expect(vote.valid?).to eq(true)
       expect(vote_2.valid?).to eq(false)

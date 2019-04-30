@@ -10,6 +10,7 @@ class VoteTile extends React.Component {
     this.handleUpvote = this.handleUpvote.bind(this)
     this.handleDownvote = this.handleDownvote.bind(this)
     this.upvotePost = this.upvotePost.bind(this)
+    this.downvotePost = this.downvotePost.bind(this)
   }
 
   upvotePost(votePayload){
@@ -33,7 +34,33 @@ class VoteTile extends React.Component {
         })
         .then(response => response.json())
         .then(body => {
-          debugger
+          this.setState({ score: body.score})
+        })
+        .catch(error => console.error(`Error in fetch: ${error.message}`));
+  }
+
+  downvotePost(votePayload){
+    fetch("/api/v1/votes",{
+      credentials: 'same-origin',
+      method: 'POST',
+      body: JSON.stringify(votePayload),
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+        }
+      })
+      .then(response => {
+        if (response.ok) {
+          return response;
+        } else {
+          let errorMessage = `${response.status}(${response.statusText})` ,
+          error = new Error(errorMessage);
+          throw(error);
+        }
+        })
+        .then(response => response.json())
+        .then(body => {
+          this.setState({ score: body.score})
         })
         .catch(error => console.error(`Error in fetch: ${error.message}`));
   }
@@ -48,7 +75,12 @@ class VoteTile extends React.Component {
   }
 
   handleDownvote(){
-    this.setState({ score: this.state.score - 1 })
+    let votePayload = {
+      vote: {vote: -1,
+      user_id: this.props.user_id,
+      review_id: this.props.review_id}
+    }
+    this.downvotePost(votePayload)
   }
 
   render(){

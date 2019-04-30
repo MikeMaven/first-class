@@ -40,6 +40,9 @@ class Review < ApplicationRecord
     less_than_or_equal_to: 5
   }
 
+  validates :user, presence: true
+
+  belongs_to :user
   belongs_to :airport
   has_many :votes
 
