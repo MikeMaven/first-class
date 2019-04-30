@@ -44,5 +44,14 @@ class Review < ApplicationRecord
 
   belongs_to :user
   belongs_to :airport
+  has_many :votes
+
+  def score
+    score = 0
+    self.votes.each do |vote|
+      score += vote.vote
+    end
+    return score
+  end
 
 end

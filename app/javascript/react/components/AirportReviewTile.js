@@ -1,4 +1,5 @@
 import React from "react"
+import VoteTile from './VoteTile'
 
 const AirportReviewTile = props => {
   let editButton
@@ -21,6 +22,11 @@ const AirportReviewTile = props => {
       </ul>
       { editButton }
       <hr />
+      <VoteTile
+        score = {props.score}
+        review_id = {props.review_id}
+        user_id = {props.user_id}
+      />
     </div>
   )
 }

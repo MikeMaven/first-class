@@ -22,3 +22,7 @@
   padding: 4px;
   background-color: white;
 }
+
+.vote-neutral {
+  color: gray;
+}
