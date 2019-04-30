@@ -39,8 +39,11 @@ RSpec.describe Api::V1::ReviewsController, type: :controller do
   end
 
   describe 'POST#index' do
+    let!(:new_user) { FactoryBot.create(:user) }
     let!(:new_airport) { FactoryBot.create(:airport) }
     let!(:new_review) { FactoryBot.create(:review, airport: new_airport) }
+
+    before { allow(controller).to receive(:current_user) { new_user } }
     it 'adds a new review to the database' do
       expect { post :create, params: {:airport_id => new_airport.id, :review => {
         :title => new_review['title'],

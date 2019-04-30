@@ -25,4 +25,10 @@ RSpec.describe Review, type: :model do
   it { should have_valid(:lounge_space).when(3) }
   it { should_not have_valid(:lounge_space).when(nil, "", 0, -5, 6, 4.5) }
 
+  it { should have_valid(:airport).when(FactoryBot.create(:airport)) }
+  it { should_not have_valid(:lounge_space).when(nil) }
+
+  it { should have_valid(:user).when(FactoryBot.create(:user)) }
+  it { should_not have_valid(:user).when(nil) }
+
 end
