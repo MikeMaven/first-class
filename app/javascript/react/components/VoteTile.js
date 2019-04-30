@@ -87,7 +87,7 @@ class VoteTile extends React.Component {
     return(
       <div>
         <i onClick={this.handleUpvote} className={`vote-${this.state.buttonClass} fas fa-plane fa-rotate-270 fa-lg`}></i>
-        {this.state.score}
+        <span className="vote-score">{this.state.score}</span>
         <i onClick={this.handleDownvote} className={`vote-${this.state.buttonClass} fas fa-plane fa-rotate-90 fa-lg`}></i>
         <p>Was this review helpful?</p>
       </div>
