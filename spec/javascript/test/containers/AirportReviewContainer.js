@@ -25,7 +25,8 @@ describe('AirportReviewContainer', () => {
           lounge_space: 3,
           airport_id: 1,
           created_at: "2019-04-24T14:16:16.896Z",
-          updated_at: "2019-04-24T14:16:16.896Z"}
+          updated_at: "2019-04-24T14:16:16.896Z",
+          user_id: 1 }
       ],
       current_user: {
         id: 1,
@@ -97,6 +98,94 @@ describe('AirportReviewContainer', () => {
 
     setTimeout(() => {
       expect(wrapper.find(NewAirportReviewFormContainer)).not.toBePresent()
+      done()
+    }, 0)
+  });
+
+  it('should set editable to true when user role is admin', (done) => {
+    reviews.current_user.role = "admin"
+    fetchMock.get('/api/v1/airports/1/reviews.json', {
+      status: 200,
+      body: reviews
+    });
+    wrapper = mount(
+      <AirportReviewContainer
+        airport_id = {1}
+      />
+    )
+
+    setTimeout(() => {
+      expect(wrapper.find(AirportReviewTile).props()).toEqual({
+        id: 1,
+        title: "This is a title",
+        body: "This body has to be at least twenty chars",
+        overall_rating: 5,
+        queue_time: 4,
+        cleanliness: 3,
+        wifi: 2,
+        staff: 1,
+        lounge_space: 3,
+        editable: true
+      })
+      done()
+    }, 0)
+  });
+
+  it('should set editable to true when current user owns review', (done) => {
+    fetchMock.get('/api/v1/airports/1/reviews.json', {
+      status: 200,
+      body: reviews
+    });
+    wrapper = mount(
+      <AirportReviewContainer
+        airport_id = {1}
+      />
+    )
+
+    setTimeout(() => {
+      expect(wrapper.find(AirportReviewTile).props()).toEqual({
+        id: 1,
+        title: "This is a title",
+        body: "This body has to be at least twenty chars",
+        overall_rating: 5,
+        queue_time: 4,
+        cleanliness: 3,
+        wifi: 2,
+        staff: 1,
+        lounge_space: 3,
+        editable: true
+      })
+      done()
+    }, 0)
+  });
+
+  it('should set editable to false when current user does not own review', (done) => {
+    reviews.reviews[0].user_id = 2
+    fetchMock.get('/api/v1/airports/1/reviews.json', {
+      status: 200,
+      body: reviews
+    });
+    wrapper = mount(
+      <AirportReviewContainer
+        airport_id = {1}
+      />
+    )
+
+    wrapper.forceUpdate(); 
+
+    setTimeout(() => {
+      expect(wrapper.find(AirportReviewTile).props()).toEqual({
+        id: 1,
+        title: "This is a title",
+        body: "This body has to be at least twenty chars",
+        overall_rating: 5,
+        queue_time: 4,
+        cleanliness: 3,
+        wifi: 2,
+        staff: 1,
+        lounge_space: 3,
+        editable: false
+      })
       done()
     }, 0)
   });
