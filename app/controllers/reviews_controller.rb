@@ -1,7 +1,6 @@
 class ReviewsController < ApplicationController
   before_action :authorize_user
 
-
   def edit
     @review = Review.find(params[:id])
   end
