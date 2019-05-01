@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import AirportReviewTile from '../components/AirportReviewTile'
 
-class AirportReviewContainer extends Component{
+class UserReviewContainer extends Component {
   constructor(props){
     super(props)
     this.state = {
@@ -69,4 +69,4 @@ class AirportReviewContainer extends Component{
   }
 }
 
-export default AirportReviewContainer
+export default UserReviewContainer
