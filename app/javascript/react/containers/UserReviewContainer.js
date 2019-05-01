@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
-import NewAirportReviewFormContainer from "./NewAirportReviewFormContainer"
 import AirportReviewTile from '../components/AirportReviewTile'
 
-class AirportReviewContainer extends Component{
+class UserReviewContainer extends Component {
   constructor(props){
     super(props)
     this.state = {
@@ -19,7 +18,7 @@ class AirportReviewContainer extends Component{
   }
 
   componentDidMount() {
-    fetch(`/api/v1/airports/${this.props.airport_id}/reviews.json`)
+    fetch(`/api/v1/users/${this.props.params.id}/reviews.json`)
     .then(response => {
       if (response.ok) {
         return response;
@@ -40,14 +39,8 @@ class AirportReviewContainer extends Component{
   }
 
   render() {
-    let memberDiv
-
-    if (this.state.current_user.role === "member") {
-      memberDiv = <NewAirportReviewFormContainer airport_id={this.props.airport_id} addReview={this.addReview} />
-    }
-
     const reviews = this.state.reviews.map(review => {
-      let editable = review.user_id === this.state.current_user.id || this.state.current_user.role === "admin"
+      let editable = review.user_id === this.state.current_user.id
       return(
         <AirportReviewTile
           score = {review.score}
@@ -70,7 +63,6 @@ class AirportReviewContainer extends Component{
 
     return(
       <div className="review-container">
-        {memberDiv}
         <h3>Reviews</h3>
         {reviews}
       </div>
@@ -78,4 +70,4 @@ class AirportReviewContainer extends Component{
   }
 }
 
-export default AirportReviewContainer
+export default UserReviewContainer

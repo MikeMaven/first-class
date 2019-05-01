@@ -59,7 +59,11 @@ describe('AirportReviewTile', () => {
   })
 
   it('renders a link when editable', () => {
-    expect(wrapper.find('a')).toBePresent()
+    expect(wrapper.text().includes('Edit')).toBe(true);
+  })
+
+  it('renders a link to the author show page', () => {
+    expect(wrapper.text().includes('View Author Profile')).toBe(true);
   })
 
   it('does not render a link when editable is false', () => {
@@ -78,7 +82,7 @@ describe('AirportReviewTile', () => {
         editable = {false}
       />
     )
-    expect(wrapper.find('a')).not.toBePresent()
+    expect(wrapper.text().includes('Edit')).toBe(false);
   })
 
 });
