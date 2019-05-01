@@ -1,4 +1,5 @@
 class Api::V1::ReviewsController < ApiController
+
   def index
     if params[:airport_id]
       airport = Airport.find(params[:airport_id])

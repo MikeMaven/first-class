@@ -9,7 +9,8 @@ describe('VoteTile', () => {
       score,
       user_id,
       review_id,
-      wrapper
+      wrapper,
+      vote
 
 
   beforeEach(() => {
@@ -58,5 +59,33 @@ describe('VoteTile', () => {
         done()
       })
     }, 0)
-})
+  })
+  it('successfully fetches the current users vote and sets the class of the vote buttons', (done) => {
+    vote = {
+      user_vote: {
+        id: 8,
+        vote: 1,
+        user_id: 1,
+        review_id: 3
+      }
+    }
+
+    fetchMock.get(`/api/v1/reviews/1/votes.json`, {
+      status: 200,
+      body: vote
+    });
+
+    wrapper = mount(
+      <VoteTile
+        score={5}
+        user_id={1}
+        review_id={1}
+      />
+    )
+
+    setTimeout(() => {
+      expect(wrapper.find('i.upvote-selected')).toBePresent();
+    done()
+    }, 0)
+  })
 });
