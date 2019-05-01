@@ -52,7 +52,7 @@ class AirportReviewContainer extends Component{
         <AirportReviewTile
           score = {review.score}
           review_id = {review.id}
-          user_id = {this.state.current_user.id}
+          user_id = {review.user_id}
           key = {review.id}
           id = {review.id}
           title = {review.title}

@@ -45,6 +45,7 @@ class UserReviewContainer extends Component {
         <AirportReviewTile
           score = {review.score}
           review_id = {review.id}
+          user_id = {review.user_id}
           key = {review.id}
           id = {review.id}
           title = {review.title}

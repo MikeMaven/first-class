@@ -67,6 +67,7 @@ describe('UserReviewContainer', () => {
       expect(wrapper.find(AirportReviewTile).props()).toEqual({
         score: 9001,
         review_id: 1,
+        user_id: 1,
         id: 1,
         title: "This is a title",
         body: "This body has to be at least twenty chars",
@@ -98,6 +99,7 @@ describe('UserReviewContainer', () => {
       expect(wrapper.find(AirportReviewTile).props()).toEqual({
         score: 9001,
         review_id: 1,
+        user_id: 1,
         id: 1,
         title: "This is a title",
         body: "This body has to be at least twenty chars",
@@ -128,6 +130,7 @@ describe('UserReviewContainer', () => {
       expect(wrapper.find(AirportReviewTile).props()).toEqual({
         score: 9001,
         review_id: 1,
+        user_id: 1,
         id: 1,
         title: "This is a title",
         body: "This body has to be at least twenty chars",
@@ -155,11 +158,11 @@ describe('UserReviewContainer', () => {
       />
     )
 
-
     setTimeout(() => {
       expect(wrapper.find(AirportReviewTile).props()).toEqual({
         score: 9001,
         review_id: 1,
+        user_id: 2,
         id: 1,
         title: "This is a title",
         body: "This body has to be at least twenty chars",
