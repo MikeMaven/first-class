@@ -31,8 +31,8 @@ class AirportShowContainer extends Component {
 
   render() {
     return(
-      <div className="airport">
-        <h1>Airport</h1>
+      <div className="airport-show-container">
+        <h1 className="airport-show-container-header">Airport Information:</h1>
         <AirportShowTile
           key={this.state.airport.id}
           name={this.state.airport.name}

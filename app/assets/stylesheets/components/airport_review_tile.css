@@ -12,6 +12,7 @@
 }
 
 .review-title {
+  font-family: 'Roboto', sans-serif;
   padding: 4px;
   color: white;
   background-color: #963742;
@@ -19,6 +20,7 @@
 }
 
 .review-body {
+  font-family: 'Roboto', sans-serif;
   padding: 4px;
   background-color: white;
 }
