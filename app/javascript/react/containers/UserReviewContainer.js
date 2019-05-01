@@ -43,6 +43,9 @@ class AirportReviewContainer extends Component{
       let editable = review.user_id === this.state.current_user.id
       return(
         <AirportReviewTile
+          score = {review.score}
+          review_id = {review.id}
+          //user_id = {this.state.current_user.id}
           key = {review.id}
           id = {review.id}
           title = {review.title}

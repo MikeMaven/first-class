@@ -1,6 +1,11 @@
-<% if @user %>
-  <% if @user.profile_photo.url %>
-    <%= image_tag @user.profile_photo.url %>
+<div>
+  <h1> <%= "#{@user.email[/[^@]+/]}'s Profile" %> </h1>
+</div>
+<div class="profile-photo">
+  <% if @user %>
+    <% if @user.profile_photo.url %>
+      <%= image_tag @user.profile_photo.url %>
+    <% end %>
   <% end %>
-<% end %>
+</div>
 <div id="app"></div>
