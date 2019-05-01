@@ -23,6 +23,15 @@
   background-color: white;
 }
 
-.vote-neutral {
+.upvote-neutral {
   color: gray;
+}
+.upvote-selected {
+  color: green;
+}
+.downvote-neutral {
+  color: gray;
+}
+.downvote-selected {
+  color: red;
 }

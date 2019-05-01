@@ -11,6 +11,9 @@ Rails.application.routes.draw do
         resources :reviews, only: [:index, :create]
       end
       resources :votes, only: [:create, :update]
+      resources :reviews, only: [:show] do
+        resources :votes, only: [:index]
+      end
     end
   end
 end

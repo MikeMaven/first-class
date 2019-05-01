@@ -1,4 +1,5 @@
 class Api::V1::ReviewsController < ApiController
+
   def index
     airport = Airport.find(params[:airport_id])
     if current_user

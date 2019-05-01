@@ -53,5 +53,4 @@ class Review < ApplicationRecord
     end
     return score
   end
-
 end

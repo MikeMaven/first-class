@@ -58,5 +58,5 @@ describe('VoteTile', () => {
         done()
       })
     }, 0)
-})
+  }) 
 });
