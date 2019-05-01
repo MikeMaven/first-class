@@ -1,11 +1,10 @@
 import '../../testHelper.js'
 import fetchMock from 'fetch-mock'
 
-import AirportReviewContainer from '../../../../app/javascript/react/containers/AirportReviewContainer'
-import NewAirportReviewFormContainer from '../../../../app/javascript/react/containers/NewAirportReviewFormContainer'
+import UserReviewContainer from '../../../../app/javascript/react/containers/UserReviewContainer'
 import AirportReviewTile from '../../../../app/javascript/react/components/AirportReviewTile'
 
-describe('AirportReviewContainer', () => {
+describe('UserReviewContainer', () => {
   let reviews,
       wrapper;
 
@@ -40,14 +39,14 @@ describe('AirportReviewContainer', () => {
         role: "member"
       }
     }
-    fetchMock.get('/api/v1/airports/1/reviews.json', {
+    fetchMock.get(`/api/v1/users/1/reviews.json`, {
       status: 200,
       body: reviews
     });
 
     wrapper = mount(
-      <AirportReviewContainer
-        airport_id = {1}
+      <UserReviewContainer
+        params = {{id: 1}}
       />
     )
   })
@@ -84,40 +83,15 @@ describe('AirportReviewContainer', () => {
     }, 0)
   });
 
-  it('should render the new review form when logged in as a member', (done) => {
-    setTimeout(() => {
-      expect(wrapper.find(NewAirportReviewFormContainer)).toBePresent()
-      done()
-    }, 0)
-  });
-
-  it('should not render the new review form when not logged in as a member', (done) => {
-    reviews.current_user.role = "guest"
-    fetchMock.get('/api/v1/airports/1/reviews.json', {
-      status: 200,
-      body: reviews
-    });
-    wrapper = mount(
-      <AirportReviewContainer
-        airport_id = {1}
-      />
-    )
-
-    setTimeout(() => {
-      expect(wrapper.find(NewAirportReviewFormContainer)).not.toBePresent()
-      done()
-    }, 0)
-  });
-
   it('should set editable to true when user role is admin', (done) => {
     reviews.current_user.role = "admin"
-    fetchMock.get('/api/v1/airports/1/reviews.json', {
+    fetchMock.get(`/api/v1/users/1/reviews.json`, {
       status: 200,
       body: reviews
     });
     wrapper = mount(
-      <AirportReviewContainer
-        airport_id = {1}
+      <UserReviewContainer
+        params = {{id: 1}}
       />
     )
 
@@ -142,13 +116,13 @@ describe('AirportReviewContainer', () => {
   });
 
   it('should set editable to true when current user owns review', (done) => {
-    fetchMock.get('/api/v1/airports/1/reviews.json', {
+    fetchMock.get(`/api/v1/users/1/reviews.json`, {
       status: 200,
       body: reviews
     });
     wrapper = mount(
-      <AirportReviewContainer
-        airport_id = {1}
+      <UserReviewContainer
+        params = {{id: 1}}
       />
     )
 
@@ -174,13 +148,13 @@ describe('AirportReviewContainer', () => {
 
   it('should set editable to false when current user does not own review', (done) => {
     reviews.reviews[0].user_id = 2
-    fetchMock.get('/api/v1/airports/1/reviews.json', {
+    fetchMock.get(`/api/v1/users/1/reviews.json`, {
       status: 200,
       body: reviews
     });
     wrapper = mount(
-      <AirportReviewContainer
-        airport_id = {1}
+      <UserReviewContainer
+        params = {{id: 1}}
       />
     )
 
