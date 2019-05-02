@@ -7,7 +7,7 @@ feature "user visits root path" do
     visit '/'
 
     expect(page).to have_content('firstClass')
-    expect(page).to have_content('Airport reviews for the frequent flyer.')
+    expect(page).to have_content('First Class Travel Starts Here')
   end
 
   scenario 'clicks the member login button and is taken to log in page' do
