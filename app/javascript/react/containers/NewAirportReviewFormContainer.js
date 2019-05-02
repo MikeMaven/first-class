@@ -9,15 +9,22 @@ class NewAirportReviewFormContainer extends Component {
     this.state = {
       title: '',
       body: '',
-      overall_rating: '',
-      queue_time: '',
-      cleanliness: '',
-      wifi: '',
-      staff: '',
-      lounge_space: '',
+      overall_rating: 0,
+      queue_time: 0,
+      cleanliness: 0,
+      wifi: 0,
+      staff: 0,
+      lounge_space: 0,
       errors: {}
     }
     this.handleChange = this.handleChange.bind(this)
+    this.handleOverallRatingChange = this.handleOverallRatingChange.bind(this)
+    this.handleQueueTimeChange = this.handleQueueTimeChange.bind(this)
+    this.handleCleanlinessChange = this.handleCleanlinessChange.bind(this)
+    this.handleWifiChange = this.handleWifiChange.bind(this)
+    this.handleStaffChange = this.handleStaffChange.bind(this)
+    this.handleLoungeSpaceChange = this.handleLoungeSpaceChange.bind(this)
+
     this.handleSubmit = this.handleSubmit.bind(this)
     this.handleClearForm = this.handleClearForm.bind(this)
     this.validateTitle = this.validateTitle.bind(this)
@@ -28,6 +35,30 @@ class NewAirportReviewFormContainer extends Component {
 
   handleChange(event) {
     this.setState({ [event.target.name]: event.target.value })
+  }
+
+  handleOverallRatingChange(event) {
+    this.setState({ overall_rating: event })
+  }
+
+  handleQueueTimeChange(event) {
+    this.setState({ queue_time: event })
+  }
+
+  handleCleanlinessChange(event) {
+    this.setState({ cleanliness: event })
+  }
+
+  handleWifiChange(event) {
+    this.setState({ wifi: event })
+  }
+
+  handleStaffChange(event) {
+    this.setState({ staff: event })
+  }
+
+  handleLoungeSpaceChange(event) {
+    this.setState({ lounge_space: event })
   }
 
   addNewAirportReview(formPayload){
@@ -174,37 +205,37 @@ class NewAirportReviewFormContainer extends Component {
           name="overall_rating"
           content={this.state.overall_rating}
           label="Overall Rating:"
-          handleChangeMethod={this.handleChange}
+          handleChangeMethod={this.handleOverallRatingChange}
         />
         <NumberField
           name="queue_time"
           content={this.state.queue_time}
           label="Queue Time Rating:"
-          handleChangeMethod={this.handleChange}
+          handleChangeMethod={this.handleQueueTimeChange}
         />
         <NumberField
           name="cleanliness"
           content={this.state.cleanliness}
           label="Cleanliness Rating:"
-          handleChangeMethod={this.handleChange}
+          handleChangeMethod={this.handleCleanlinessChange}
         />
         <NumberField
           name="wifi"
           content={this.state.wifi}
           label="Wifi Rating:"
-          handleChangeMethod={this.handleChange}
+          handleChangeMethod={this.handleWifiChange}
         />
         <NumberField
           name="staff"
           content={this.state.staff}
           label="Staff Rating:"
-          handleChangeMethod={this.handleChange}
+          handleChangeMethod={this.handleStaffChange}
         />
         <NumberField
           name="lounge_space"
           content={this.state.lounge_space}
           label="Lounge Space Rating:"
-          handleChangeMethod={this.handleChange}
+          handleChangeMethod={this.handleLoungeSpaceChange}
         />
         <div className="button-group">
           <button className="secondary button" onClick={this.handleClearForm}>Clear</button>
