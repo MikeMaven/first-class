@@ -42,6 +42,12 @@ class AirportContainer extends Component {
             id={airport.id}
             name={airport.name}
             airport_code={airport.airport_code}
+            overall_rating={airport.average_rating}
+            queue_time_rating={airport.average_queue_time_rating}
+            cleanliness_rating={airport.average_cleanliness_rating}
+            wifi_rating={airport.average_wifi_rating}
+            staff_rating={airport.average_staff_rating}
+            lounge_space_rating={airport.average_lounge_space_rating}
           />
         )
       })

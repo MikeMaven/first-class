@@ -20,7 +20,13 @@ describe('AirportContainer', () => {
           location: "Boston, MA",
           description: "Cool",
           created_at: "2019-04-24T14:16:16.896Z",
-          updated_at: "2019-04-24T14:16:16.896Z"
+          updated_at: "2019-04-24T14:16:16.896Z",
+          average_rating: 4,
+          average_queue_time_rating: 2.8,
+          average_cleanliness_rating: 3.2,
+          average_wifi_rating: 3.2,
+          average_staff_rating: 3.6,
+          average_lounge_space_rating: 3.2
         }
       ],
       current_user: {
@@ -56,7 +62,13 @@ describe('AirportContainer', () => {
     expect(wrapper.find(Airport).props()).toEqual({
       id: 1,
       name: "Logan",
-      airport_code: "BOS"
+      airport_code: "BOS",
+      overall_rating: 4,
+      queue_time_rating: 2.8,
+      cleanliness_rating: 3.2,
+      wifi_rating: 3.2,
+      staff_rating: 3.6,
+      lounge_space_rating: 3.2
     });
     done()
     }, 0)

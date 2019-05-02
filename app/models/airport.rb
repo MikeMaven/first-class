@@ -11,7 +11,67 @@ class Airport < ApplicationRecord
       self.reviews.each do |review|
         total_score += review.overall_rating
       end
-      (total_score / self.reviews.length).to_i
+      (total_score.to_f / self.reviews.length).round(1)
+    else
+      total_score
+    end
+  end
+
+  def average_queue_time_rating
+    total_score = 0
+    if self.reviews.length >= 1
+      self.reviews.each do |review|
+        total_score += review.queue_time
+      end
+      (total_score.to_f / self.reviews.length).round(1)
+    else
+      total_score
+    end
+  end
+
+  def average_cleanliness_rating
+    total_score = 0
+    if self.reviews.length >= 1
+      self.reviews.each do |review|
+        total_score += review.cleanliness
+      end
+      (total_score.to_f / self.reviews.length).round(1)
+    else
+      total_score
+    end
+  end
+
+  def average_wifi_rating
+    total_score = 0
+    if self.reviews.length >= 1
+      self.reviews.each do |review|
+        total_score += review.wifi
+      end
+      (total_score.to_f / self.reviews.length).round(1)
+    else
+      total_score
+    end
+  end
+
+  def average_staff_rating
+    total_score = 0
+    if self.reviews.length >= 1
+      self.reviews.each do |review|
+        total_score += review.staff
+      end
+      (total_score.to_f / self.reviews.length).round(1)
+    else
+      total_score
+    end
+  end
+
+  def average_lounge_space_rating
+    total_score = 0
+    if self.reviews.length >= 1
+      self.reviews.each do |review|
+        total_score += review.lounge_space
+      end
+      (total_score.to_f / self.reviews.length).round(1)
     else
       total_score
     end
