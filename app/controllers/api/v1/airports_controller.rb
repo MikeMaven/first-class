@@ -26,6 +26,6 @@ class Api::V1::AirportsController < ApiController
   end
 
   def serialized_airports
-    ActiveModel::Serializer::ArraySerializer.new(Airport.all, each_serializer: AirportSerializer)
+    ActiveModel::Serializer::ArraySerializer.new(Airport.all.order(:airport_code), each_serializer: AirportSerializer)
   end
 end
