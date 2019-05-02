@@ -6,9 +6,11 @@ class Api::V1::AirportsController < ApiController
       render json: { airports: serialized_airports, current_user: { role: "guest"} }
     end
   end
+
   def show
     render json: Airport.find(params[:id])
   end
+
   def create
     airport = Airport.new(airport_params)
 

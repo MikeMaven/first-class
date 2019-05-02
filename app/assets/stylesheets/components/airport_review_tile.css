@@ -2,6 +2,7 @@
   padding: 20px;
   margin: 10px;
   border: 4px groove;
+  min-width: 400px;
   max-width: 400px;
   background-color: #D8E1E8;
   font-family: 'Roboto', sans-serif;
@@ -12,6 +13,7 @@
 }
 
 .review-title {
+  font-family: 'Roboto', sans-serif;
   padding: 4px;
   color: white;
   background-color: #963742;
@@ -19,6 +21,7 @@
 }
 
 .review-body {
+  font-family: 'Roboto', sans-serif;
   padding: 4px;
   background-color: white;
 }
