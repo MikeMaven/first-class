@@ -6,7 +6,7 @@ class AirportShowContainer extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      airport: {id: '', name: '', airport_code: '', location: '', description: ''}
+      airport: {id: '', name: '', airport_code: '', location: '', description: '', average_rating: 0}
     }
   }
 
@@ -39,6 +39,7 @@ class AirportShowContainer extends Component {
           airport_code={this.state.airport.airport_code}
           location = {this.state.airport.location}
           description = {this.state.airport.description}
+          average_rating = {this.state.airport.average_rating}
         />
         {this.props.children}
         <AirportReviewContainer airport_id={this.props.params.id} />

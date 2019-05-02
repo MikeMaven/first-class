@@ -5,7 +5,7 @@ const AirportReviewTile = props => {
   let editButton
 
   if (props.editable) {
-    editButton = <div> <a href={`/reviews/${props.id}/edit`} class="edit">Edit</a> </div>
+    editButton = <div> <a href={`/reviews/${props.id}/edit`} className="edit">Edit</a> </div>
   }
 
   return (

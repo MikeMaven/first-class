@@ -4,10 +4,11 @@ const AirportShowTile = props => {
   return(
     <div className="airport-show-div">
       <h1 className="airport-show-name">({props.airport_code}) {props.name}</h1>
-
-        <h4>{props.location}</h4>
-        <p>{props.description}</p>
-
+      <div className="airport-show-info">
+        <h4><b>{props.location}</b></h4>
+        <p className="airport-show-description">{props.description}</p>
+        <p>Average Overall Rating: {props.average_rating}</p>
+      </div>
     </div>
   )
 }

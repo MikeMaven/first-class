@@ -1,6 +1,7 @@
 #reviews {
   display: flex;
   flex-direction: row;
+  flex-flow: row wrap;
 }
 
 .reviews-header {
