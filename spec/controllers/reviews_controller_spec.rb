@@ -5,6 +5,8 @@ RSpec.describe Api::V1::ReviewsController, type: :controller do
     let!(:airport1) { FactoryBot.create(:airport) }
     let!(:review1) { FactoryBot.create(:review, airport: airport1) }
     let!(:review2) { FactoryBot.create(:review, airport: airport1) }
+    let!(:vote1) {Vote.create(vote: 1, review: review1, user: FactoryBot.create(:user))}
+    let!(:vote2) {Vote.create(vote: -1, review: review2, user: FactoryBot.create(:user))}
     it 'returns successful response with json-formatted data' do
       get :index, params: {:airport_id => airport1.id}
 
