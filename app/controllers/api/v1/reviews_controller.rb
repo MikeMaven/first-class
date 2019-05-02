@@ -33,10 +33,10 @@ class Api::V1::ReviewsController < ApiController
 
   def serialized_reviews
     airport = Airport.find(params[:airport_id])
-    ActiveModel::Serializer::ArraySerializer.new(airport.reviews, each_serializer: ReviewSerializer)
+  ActiveModel::Serializer::ArraySerializer.new(airport.reviews.sort_by(&:score).reverse, each_serializer: ReviewSerializer)
   end
   def user_serialized_reviews
     user = User.find(params[:user_id])
-    ActiveModel::Serializer::ArraySerializer.new(user.reviews, each_serializer: ReviewSerializer)
+    ActiveModel::Serializer::ArraySerializer.new(user.reviews.sort_by(&:score).reverse, each_serializer: ReviewSerializer)
   end
 end
