@@ -33,5 +33,5 @@ coverage/*
 # Ignore uploaded files in test/development
 /public/uploads
 
-#Ignore all .env files
+#Ignore environment variables
 .env
