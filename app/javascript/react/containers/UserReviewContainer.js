@@ -63,8 +63,10 @@ class UserReviewContainer extends Component {
 
     return(
       <div className="review-container">
-        <h3>Reviews</h3>
-        {reviews}
+        <h3 className="reviews-header">Reviews:</h3>
+        <div id="reviews">
+          {reviews}
+        </div>
       </div>
     )
   }
