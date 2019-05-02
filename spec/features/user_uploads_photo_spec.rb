@@ -17,6 +17,6 @@ feature "profile photo" do
     visit "/users/#{user.id}"
 
     expect(page).to have_css("img[src*='photo.jpg']")
-    expect(page).to have_content("josh's Profile")
+    expect(page).to have_content("Josh's Profile")
   end
 end
