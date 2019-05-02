@@ -10,6 +10,8 @@ class NewAirportFormContainer extends React.Component {
       airportLocation: '',
       airportCode: '',
       airportDescription: '',
+      airportLat: '',
+      airportLong: '',
       errors: {}
     }
     this.handleChange = this.handleChange.bind(this)
@@ -57,13 +59,17 @@ class NewAirportFormContainer extends React.Component {
     if (
       this.validateInput(this.state.airportName) &&
       this.validateInput(this.state.airportLocation) &&
-      this.validateInput(this.state.airportCode)
+      this.validateInput(this.state.airportCode) &&
+      this.validateInput(this.state.airportLat) &&
+      this.validateInput(this.state.airportLong)
     ) {
       let formPayload = {
         name: this.state.airportName,
         location: this.state.airportLocation,
         airport_code: this.state.airportCode,
-        description: this.state.airportDescription
+        description: this.state.airportDescription,
+        lat: this.state.airportLat,
+        long: this.state.airportLong
       }
       this.addNewAirport(formPayload);
       this.handleClearForm(event)
@@ -77,6 +83,8 @@ class NewAirportFormContainer extends React.Component {
       airportLocation: '',
       airportCode: '',
       airportDescription: '',
+      airportLat: '',
+      airportLong: '',
       errors: {}
     })
   }
@@ -89,6 +97,14 @@ class NewAirportFormContainer extends React.Component {
       }
       else if (selection === this.state.airportCode) {
         let newError = { nameError: 'You must enter a 3 letter code for the airport.' }
+        this.setState({ errors: Object.assign({}, this.state.errors, newError) })
+      }
+      else if (selection === this.state.airportLat) {
+        let newError = { nameError: 'You must enter a latitude for the airport.' }
+        this.setState({ errors: Object.assign({}, this.state.errors, newError) })
+      }
+      else if (selection === this.state.airportLong) {
+        let newError = { nameError: 'You must enter a latitude for the airport.' }
         this.setState({ errors: Object.assign({}, this.state.errors, newError) })
       }
       else {
@@ -140,6 +156,18 @@ class NewAirportFormContainer extends React.Component {
           name="airportDescription"
           content={this.state.airportDescription}
           label="Description:"
+          handleChangeMethod={this.handleChange}
+        />
+        <TextField
+          name="airportLat"
+          content={this.state.airportLat}
+          label="Latitude:"
+          handleChangeMethod={this.handleChange}
+        />
+        <TextField
+          name="airportLong"
+          content={this.state.airportLong}
+          label="Longitude:"
           handleChangeMethod={this.handleChange}
         />
         <div className="button-group">

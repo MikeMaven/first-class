@@ -19,6 +19,8 @@ describe('AirportShowTile', () => {
         airport_code={"BOS"}
         location={"Boston"}
         description={"Anything"}
+        lat={"54.234234234"}
+        long={"-45.234234"}
       />
     )
   })

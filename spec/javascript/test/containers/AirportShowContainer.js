@@ -19,6 +19,8 @@ describe('AirportShowContainer', () => {
         location: "Boston",
         airport_code: "BOS",
         description: "Anything",
+        lat: "42.23423423",
+        long: "-43.234234",
         average_rating: 0
       }
     }
@@ -53,6 +55,8 @@ describe('AirportShowContainer', () => {
       airport_code: '',
       location: '',
       description: '',
+      lat: 0,
+      long: 0,
       average_rating: 0
     }});
   });
@@ -69,6 +73,8 @@ describe('AirportShowContainer', () => {
         location: "Boston",
         airport_code: "BOS",
         description: "Anything",
+        lat: "42.23423423",
+        long: "-43.234234",
         average_rating: 0
       })
       done()
