@@ -43,13 +43,11 @@ class VoteTile extends React.Component {
     if (this.state.currentUserVote === 1) {
       votePayload = {
         vote: {vote: 0,
-        user_id: this.props.user_id,
         review_id: this.props.review_id}
       }
     } else {
         votePayload = {
           vote: {vote: 1,
-          user_id: this.props.user_id,
           review_id: this.props.review_id}
       }
     }
@@ -61,13 +59,11 @@ class VoteTile extends React.Component {
     if (this.state.currentUserVote === -1) {
       votePayload = {
         vote: {vote: 0,
-        user_id: this.props.user_id,
         review_id: this.props.review_id}
       }
     } else {
         votePayload = {
           vote: {vote: -1,
-          user_id: this.props.user_id,
           review_id: this.props.review_id}
       }
     }
