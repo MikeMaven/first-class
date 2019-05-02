@@ -5,7 +5,7 @@ const AirportReviewTile = props => {
   let editButton
 
   if (props.editable) {
-    editButton = <div> <a href={`/reviews/${props.id}/edit`} class="edit">Edit</a> </div>
+    editButton = <div> <a href={`/reviews/${props.id}/edit`} className="edit">Edit</a> </div>
   }
 
   return (
@@ -21,7 +21,7 @@ const AirportReviewTile = props => {
         <li>Lounge Space Rating: {props.lounge_space}</li>
       </ul>
       { editButton }
-      <div> <a href={`/users/${props.user_id}`} class="author">View Author Profile</a> </div>
+      <div> <a href={`/users/${props.user_id}`} className="author">View Author Profile</a> </div>
       <hr />
       <VoteTile
         score = {props.score}
