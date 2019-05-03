@@ -14,7 +14,7 @@ body {
 
 #landing-page::after {
   content: "";
-  background: url("hero-image.jpg");
+  background: url("s3://first-class-production/hero-image.jpg");
   opacity: 0.5;
   top: 0;
   left: 0;
