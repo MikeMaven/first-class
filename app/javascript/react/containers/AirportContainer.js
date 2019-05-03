@@ -62,13 +62,13 @@ class AirportContainer extends Component {
           <div className='section'>
             <div className='airport_container'>
               <div className='airport_show_title'>
-                <h3 className='moto'>Choice is an incredible previledge, excersie it.</h3>
               </div>
               <span className='spacer'></span>
                 <div className="airports_row">
                   {airports}
                 </div>
                 {this.props.children}
+                {adminDiv}
             </div>
           </div>
         </div>
