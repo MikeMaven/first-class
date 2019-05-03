@@ -24,6 +24,14 @@ ActiveRecord::Schema.define(version: 2019_04_29_151507) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "global_airports", force: :cascade do |t|
+    t.string "airport_code"
+    t.string "name"
+    t.string "location"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "reviews", force: :cascade do |t|
     t.string "title", null: false
     t.text "body", null: false

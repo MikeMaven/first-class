@@ -53,17 +53,24 @@ class AirportContainer extends Component {
       })
 
       let adminDiv
-
       if (this.state.current_user.role === 'admin') {
         adminDiv = <h4 className="secondary button"><Link to={"/airports/new"}> Add a new airport! </Link></h4>
       }
 
       return(
-        <div className="airports">
-          <h1 className="airports-container-header">Airports</h1>
-          {adminDiv}
-          {airports}
-          {this.props.children}
+        <div>
+          <div className='section'>
+            <div className='airport_container'>
+              <div className='airport_show_title'>
+                <h3 className='moto'>Choice is an incredible previledge, excersie it.</h3>
+              </div>
+              <span className='spacer'></span>
+                <div className="airports_row">
+                  {airports}
+                </div>
+                {this.props.children}
+            </div>
+          </div>
         </div>
       )
   }
