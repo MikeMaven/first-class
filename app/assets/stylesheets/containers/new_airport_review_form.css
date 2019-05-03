@@ -1,4 +1,12 @@
 .new-airport-review-form {
   display: flex;
   flex-direction: row;
+  justify-content: center;
+}
+
+.review-form-inputs {
+  margin: 20px;
+}
+.review-form-inputs h4 {
+  font-family: 'Roboto', sans-serif;
 }

@@ -190,6 +190,7 @@ class NewAirportReviewFormContainer extends Component {
       <form className="new-airport-review-form callout" onSubmit={this.handleSubmit}>
       {errorDiv}
       <div className="review-form-inputs">
+      <h4>Leave a Review:</h4>
         <TextField
           name="title"
           content={this.state.title}
@@ -197,13 +198,15 @@ class NewAirportReviewFormContainer extends Component {
           handleChangeMethod={this.handleChange}
           type="text"
         />
-        <TextField
-          name="body"
-          content={this.state.body}
-          label="Body:"
-          handleChangeMethod={this.handleChange}
-          type="text"
-        />
+        <label>Body:
+        <textarea
+        rows="5"
+        name="body"
+        value={this.state.body}
+        onChange={this.handleChange}
+        >
+        </textarea>
+        </label>
         <div className="button-group">
         <button className="secondary button" onClick={this.handleClearForm}>Clear</button>
         <input className="success button" type="submit" value="Submit Form" />
