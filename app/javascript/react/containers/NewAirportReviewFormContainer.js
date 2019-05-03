@@ -208,8 +208,8 @@ class NewAirportReviewFormContainer extends Component {
         </textarea>
         </label>
         <div className="button-group">
+        <input className="red-button button" type="submit" value="Submit Form" />
         <button className="secondary button" onClick={this.handleClearForm}>Clear</button>
-        <input className="success button" type="submit" value="Submit Form" />
         </div>
       </div>
       <div className="review-form-stars">

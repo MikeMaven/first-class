@@ -1,7 +1,8 @@
 .new-airport-review-form {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: left;
+  margin-top: 20px;
 }
 
 .review-form-inputs {
@@ -9,4 +10,12 @@
 }
 .review-form-inputs h4 {
   font-family: 'Roboto', sans-serif;
+}
+
+.red-button {
+  background-color: #963742;
+}
+
+.red-button:hover {
+  background-color: #B26D75;
 }

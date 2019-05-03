@@ -54,7 +54,7 @@ class AirportContainer extends Component {
 
       let adminDiv
       if (this.state.current_user.role === 'admin') {
-        adminDiv = <h4 className="secondary button"><Link to={"/airports/new"}> Add a new airport! </Link></h4>
+        adminDiv = <Link to={"/airports/new"} className="admin-link"> Add A New Airport </Link>
       }
 
       return(
@@ -65,11 +65,13 @@ class AirportContainer extends Component {
               </div>
               <span className='spacer'></span>
                 <div className="airports_row">
+                  <div className="admin-div">
+                    {adminDiv}
+                  </div>
                   {airports}
                 </div>
                 {this.props.children}
             </div>
-            {adminDiv}
           </div>
         </div>
       )

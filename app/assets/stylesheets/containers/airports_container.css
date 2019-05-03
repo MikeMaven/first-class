@@ -5,6 +5,16 @@
   padding-right: 125px;
 }
 
+.admin-link {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size:1.3em;
+  margin-top: 15px;
+}
+
 .airport_show_title {
   margin: 0px;
   margin-top: 50px;
