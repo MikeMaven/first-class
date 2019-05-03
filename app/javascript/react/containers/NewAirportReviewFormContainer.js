@@ -189,18 +189,27 @@ class NewAirportReviewFormContainer extends Component {
     return(
       <form className="new-airport-review-form callout" onSubmit={this.handleSubmit}>
       {errorDiv}
+      <div className="review-form-inputs">
         <TextField
           name="title"
           content={this.state.title}
           label="Title:"
           handleChangeMethod={this.handleChange}
+          type="text"
         />
         <TextField
           name="body"
           content={this.state.body}
           label="Body:"
           handleChangeMethod={this.handleChange}
+          type="text"
         />
+        <div className="button-group">
+        <button className="secondary button" onClick={this.handleClearForm}>Clear</button>
+        <input className="success button" type="submit" value="Submit Form" />
+        </div>
+      </div>
+      <div className="review-form-stars">
         <NumberField
           name="overall_rating"
           content={this.state.overall_rating}
@@ -237,9 +246,6 @@ class NewAirportReviewFormContainer extends Component {
           label="Lounge Space Rating:"
           handleChangeMethod={this.handleLoungeSpaceChange}
         />
-        <div className="button-group">
-          <button className="secondary button" onClick={this.handleClearForm}>Clear</button>
-          <input className="success button" type="submit" value="Submit Form" />
         </div>
       </form>
     )
