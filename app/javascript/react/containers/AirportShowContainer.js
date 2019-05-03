@@ -6,7 +6,21 @@ class AirportShowContainer extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      airport: {id: '', name: '', airport_code: '', location: '', description: '', average_rating: 0, lat: 0, long:0}
+      airport: {
+        id: '',
+        name: '',
+        airport_code: '',
+        location: '',
+        description: '',
+        average_rating: 0,
+        average_queue_time_rating: 0,
+        average_cleanliness_rating: 0,
+        average_wifi_rating: 0,
+        average_staff_rating: 0,
+        average_lounge_space_rating: 0,
+        lat: 0,
+        long:0
+      }
     }
   }
 
@@ -32,14 +46,18 @@ class AirportShowContainer extends Component {
   render() {
     return(
       <div className="airport-show-container">
-        <h1 className="airport-show-container-header">Airport Information:</h1>
         <AirportShowTile
           key={this.state.airport.id}
           name={this.state.airport.name}
           airport_code={this.state.airport.airport_code}
           location = {this.state.airport.location}
           description = {this.state.airport.description}
-          average_rating = {this.state.airport.average_rating}
+          overall_rating={this.state.airport.average_rating}
+          queue_time_rating={this.state.airport.average_queue_time_rating}
+          cleanliness_rating={this.state.airport.average_cleanliness_rating}
+          wifi_rating={this.state.airport.average_wifi_rating}
+          staff_rating={this.state.airport.average_staff_rating}
+          lounge_space_rating={this.state.airport.average_lounge_space_rating}
           lat={this.state.airport.lat}
           long={this.state.airport.long}
         />

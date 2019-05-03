@@ -15,3 +15,7 @@
  *= require foundation_and_overrides
 
  */
+
+.sign-up-form {
+  max-width: 1000px;
+}

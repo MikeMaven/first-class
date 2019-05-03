@@ -4,7 +4,12 @@
   flex-flow: row wrap;
 }
 
-.reviews-header {
-  font-family: 'Arizonia', cursive;
-  font-size: 3em;
+.airport-show-reviews-header {
+  font-family: 'Roboto', sans-serif;
+  background-color: #963742;
+  color: white;
+  padding: 3px 30px 3px 30px;
+  font-size: 2em;
+  margin-right: 20px;
+  margin-top: 50px;
 }
