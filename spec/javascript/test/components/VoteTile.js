@@ -28,8 +28,8 @@ describe('VoteTile', () => {
   afterEach(fetchMock.restore)
 
   it('renders a div with the current score', () => {
-    expect(wrapper.find('div')).toBePresent()
-    expect(wrapper.find('div').text()).toContain("5")
+    expect(wrapper.find('span.vote-score')).toBePresent()
+    expect(wrapper.find('span.vote-score').text()).toContain("5")
   })
 
   it('renders a div tag with an up-vote and down-vote icon', () => {

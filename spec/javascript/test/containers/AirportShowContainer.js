@@ -21,7 +21,12 @@ describe('AirportShowContainer', () => {
         description: "Anything",
         lat: "42.23423423",
         long: "-43.234234",
-        average_rating: 0
+        average_rating: 0,
+        average_queue_time_rating: 0,
+        average_cleanliness_rating: 0,
+        average_wifi_rating: 0,
+        average_staff_rating: 0,
+        average_lounge_space_rating: 0
       }
     }
     fetchMock.get('/api/v1/airports/1.json', {
@@ -57,25 +62,30 @@ describe('AirportShowContainer', () => {
       description: '',
       lat: 0,
       long: 0,
-      average_rating: 0
+      average_rating: 0,
+      average_queue_time_rating: 0,
+      average_cleanliness_rating: 0,
+      average_wifi_rating: 0,
+      average_staff_rating: 0,
+      average_lounge_space_rating: 0
     }});
-  });
-
-  it('renders an h1 tag titled Airport Information:', () => {
-    expect(wrapper.find('h1.airport-show-container-header')).toBePresent()
-    expect(wrapper.find('h1.airport-show-container-header').text()).toContain("Airport Information:")
   });
 
   it('should render Airport Tile Components with specific props', (done) => {
     setTimeout(() => {
       expect(wrapper.find(AirportShowTile).props()).toEqual({
         name: "Logan",
-        location: "Boston",
         airport_code: "BOS",
+        location: "Boston",
         description: "Anything",
+        overall_rating: 0,
+        queue_time_rating: 0,
+        cleanliness_rating: 0,
+        wifi_rating: 0,
+        staff_rating: 0,
+        lounge_space_rating: 0,
         lat: "42.23423423",
-        long: "-43.234234",
-        average_rating: 0
+        long: "-43.234234"
       })
       done()
     }, 0)

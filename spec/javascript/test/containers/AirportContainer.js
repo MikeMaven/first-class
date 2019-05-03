@@ -52,11 +52,6 @@ describe('AirportContainer', () => {
     expect(wrapper.state()).toEqual({ airports: [], current_user: { role: "guest" } });
   });
 
-  it('renders an h1 tag titled Airports', () => {
-    expect(wrapper.find('h1')).toBePresent()
-    expect(wrapper.find('h1').text()).toContain("Airports")
-  });
-
   it('should render Airport Components with specific props', (done) => {
     setTimeout(() => {
     expect(wrapper.find(Airport).props()).toEqual({
@@ -74,10 +69,9 @@ describe('AirportContainer', () => {
     }, 0)
   });
 
-  it('renders an h4 tag with the new airport link text in it', (done) => {
+  it('renders link with the new airport link text in it', (done) => {
     setTimeout(() => {
-      expect(wrapper.find('h4')).toBePresent()
-      expect(wrapper.find('h4').text()).toContain("Add a new airport!")
+      expect(wrapper.find(Link)).toBePresent()
       done()
     }, 0)
   });

@@ -14,7 +14,7 @@ feature "user visits root path" do
 
     visit '/'
     click_link "Member Login"
-    expect(page).to have_content "Log in to begin your firstClass journey!"
+    expect(page).to have_content "Log In to Begin Your firstClass Journey"
     expect(page).to have_content "Email"
     expect(page).to have_content "Password"
   end

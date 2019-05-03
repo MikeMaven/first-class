@@ -22,21 +22,6 @@ describe('Airport', () => {
     )
   })
 
-  it('renders a p tag with the airport name', () => {
-    expect(wrapper.find('p')).toBePresent()
-    expect(wrapper.find('p').text()).toContain("Logan")
-  })
-
-  it('renders a p tag with the airport code', () => {
-    expect(wrapper.find('p')).toBePresent()
-    expect(wrapper.find('p').text()).toContain("BOS")
-  })
-
-  it('does not render a p tag with the airport location', () => {
-    expect(wrapper.find('p')).toBePresent()
-    expect(wrapper.find('p').text()).not.toContain("Boston")
-  })
-
   it('renders a react router link to a show page', () => {
     expect(wrapper.find(Link)).toBePresent()
     expect(wrapper.find(Link).text()).toContain("(BOS) Logan")

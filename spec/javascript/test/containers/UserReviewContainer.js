@@ -59,7 +59,7 @@ describe('UserReviewContainer', () => {
 
   it('renders an h3 tag titled Reviews', () => {
     expect(wrapper.find('h3')).toBePresent()
-    expect(wrapper.find('h3').text()).toContain("Reviews")
+    expect(wrapper.find('h3').text()).toContain("Reviews:")
   });
 
   it('should render Review Tile Components with specific props', (done) => {

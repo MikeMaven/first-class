@@ -25,14 +25,14 @@ describe('AirportShowTile', () => {
     )
   })
 
-  it('renders a h1 tag with the airport name', () => {
-    expect(wrapper.find('h1.airport-show-name')).toBePresent()
-    expect(wrapper.find('h1.airport-show-name').text()).toContain("Logan")
+  it('renders a span tag with the airport name', () => {
+    expect(wrapper.find('span.airport-show-name')).toBePresent()
+    expect(wrapper.find('span.airport-show-name').text()).toContain("Logan")
   })
 
-  it('renders a h1 tag with the airport code', () => {
-    expect(wrapper.find('h1.airport-show-name')).toBePresent()
-    expect(wrapper.find('h1.airport-show-name').text()).toContain("BOS")
+  it('renders a span tag with the airport code', () => {
+    expect(wrapper.find('span.airport-show-code')).toBePresent()
+    expect(wrapper.find('span.airport-show-code').text()).toContain("BOS")
   })
 
   it('renders an h4 tag with the airport location', () => {
