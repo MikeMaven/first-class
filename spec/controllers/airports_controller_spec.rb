@@ -37,7 +37,7 @@ RSpec.describe Api::V1::AirportsController, type: :controller do
   end
 
   describe 'POST#index' do
-    let!(:new_airport) { { airport: {airport_code: "BOS", name: "Logan Int", location: "Boston, MA", description: "Cool"} }}
+    let!(:new_airport) { { airport: {airport_code: "BOS", name: "Logan Int", location: "Boston, MA", description: "Cool", lat: "42.3656132", long: "-71.0095602"} }}
     it 'adds a new airport to the database' do
       expect { post :create, params: new_airport }.to change { Airport.count }.by 1
     end

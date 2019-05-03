@@ -2,6 +2,8 @@ class Airport < ApplicationRecord
   validates :name, presence: true
   validates :location, presence: true
   validates :airport_code, presence: true
+  validates :lat, presence: true
+  validates :long, presence: true
 
   has_many :reviews
 

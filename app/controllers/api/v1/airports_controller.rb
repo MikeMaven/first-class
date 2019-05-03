@@ -22,7 +22,7 @@ class Api::V1::AirportsController < ApiController
   end
 
   def airport_params
-    params.require(:airport).permit(:airport_code, :name, :location, :description)
+    params.require(:airport).permit(:airport_code, :name, :location, :description, :lat, :long)
   end
 
   def serialized_airports
